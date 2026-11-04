@@ -1,0 +1,11 @@
+mu_search
+mu_search2
+orbits
+orbits2
+lemma_d
+lemma_d_check
+*.log
+__pycache__/
+*.pyc
+lemma_d_out.txt
+reps_T.txt
