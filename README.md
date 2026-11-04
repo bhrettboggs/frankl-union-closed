@@ -6,6 +6,16 @@ Computational study of the equality structure of **Frankl's union-closed sets co
 
 where c(e) is the number of members containing element e.
 
+A family is **valid** at level *k* if it is union-closed on [k], contains ∅ and [k], has no singleton members, and is separating (see `frankl_core.py` for the exact conventions). Frankl's conjecture says some element lies in at least half the members, which is μ ≥ 0. This project asks a finer question: **how small can the margin μ get** for valid families at each *k*, and which families attain the minimum?
+
+## Context and prior work
+
+This repository does **not** re-verify Frankl's conjecture for small universes; that is already known. It studies the margin μ and its extremal families, a question the verifications below don't directly answer. Whether these minimum margins already appear elsewhere in the literature has not yet been checked.
+
+- **Small universes.** Bošnjak and Marković proved the conjecture for universes of at most 11 elements, and Živković and Vučković gave a computer-assisted proof for 12 elements ("The 12-element case of Frankl's conjecture", preprint, 2012).
+- **Small families.** Combined with Lo Faro's lower bound on the size of a minimal counterexample (also Roberts and Simpson, 2010), this implies the conjecture for families with at most about 50 sets. See Bruhn and Schaudt, *The Journey of the Union-Closed Sets Conjecture*, Graphs and Combinatorics 31 (2015), for a survey.
+- **Constant-fraction bounds.** Gilmer (arXiv:2211.09055, 2022) proved the first constant lower bound (0.01). Alweiss, Huang and Sellke (Electron. J. Combin. 31(3), 2024) raised it to (3−√5)/2 ≈ 0.38, and others have since nudged it slightly higher.
+
 ## Results (program-internal)
 
 | k | min μ | how established |
@@ -55,3 +65,9 @@ Requires gcc and Python 3.10+ (uses `int.bit_count`).
 python3 orbit_driver3.py 7 7 200 1 50000000 3   # rerun until COMPLETE; ~11 min single-core
 ./orbits 7 127 | awk '$1=="REP"{print $2}' | ./lemma_d > lemma_d_out.txt
 ```
+
+## History and license
+
+The search was developed locally and moved to this repository in a single commit, so the git history starts at the finished state.
+
+MIT. See [LICENSE](LICENSE).
