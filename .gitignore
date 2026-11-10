@@ -9,3 +9,9 @@ __pycache__/
 *.pyc
 lemma_d_out.txt
 reps_T.txt
+mu_search3
+mu_search4
+orbits3
+lemma_d2
+runs/
+!results/*.log
