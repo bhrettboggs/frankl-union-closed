@@ -537,3 +537,46 @@ version remains unknown (0.3).
   as references inside Tian's preprint and were not opened: Bouchard,
   arXiv:2509.12537 (an averaging result for separating height-four
   families), Colbert (Order 43, 2026), and Hu (Discrete Math. 346, 2023).
+
+## 8. Additions after Section A
+
+Found during the novelty checks of Section C (2026-11-12). They were missed
+by the survey above.
+
+- **A weighted strengthening is false.** Wang,
+  [arXiv:2609.25101](https://arxiv.org/abs/2609.25101) [read, full text;
+  single-author preprint, September 2026, unrefereed]: there are weights
+  w ≥ 0 on subsets of a finite set with w(∅) = 0 and
+  w(A∪B) ≥ min{w(A), w(B)} such that every element carries less than ε of
+  the total weight (Thm 1.3; quantitatively ≤ 1/m + (m−1)/(mr), Thm 1.4).
+  The paper attributes the question to the Polymath11 discussion and says
+  that Kahn's course notes already disprove the weighted statement with
+  constant 1/2 [via Wang; neither source opened]. This contradicts the
+  sentence in §4.1 that no weighted version is known to fail: **that
+  sentence is wrong and is superseded by this entry.**
+- **Minimal counterexamples in the lattice form.** Bouchard,
+  [arXiv:2503.00277](https://arxiv.org/abs/2503.00277) [read, full text]:
+  deleting any set of join-irreducible (or any set of meet-irreducible)
+  elements of a finite lattice leaves a lattice (Thm 1.4), and a
+  minimum-size counterexample has at most one doubly irreducible element
+  (Thm 2.6), among other conditions. Relevant to §4.2 and to Sections D
+  and F. The paper also cites a proof of the conjecture for dismantlable
+  lattices (Joshi–Waphare–Kavishwar, Algebra Universalis 76 (2016)
+  [via Bouchard]), which answers part of the gap noted in §2.1.
+- **A stronger conjecture that is still open.** Marigo–Schipani,
+  [arXiv:1603.01215](https://arxiv.org/abs/1603.01215) [read]: for a
+  reduced union-closed family, Σ_{(A,B)} |A∩B| ≥ Σ_{(A,B)} |A∖B|
+  (their Conjecture 4.2), which implies Frankl's conjecture. They also
+  restate Poonen's strict conjecture for reduced families.
+- **Not opened at all:** the Polymath11 threads on Gowers's blog (FUNC1 to
+  FUNC4), which discuss strengthenings, variants and potential
+  counterexamples at length.
+
+**What this says about completeness.** The survey was built from the
+Bruhn–Schaudt survey (2013) and from papers reachable by keyword. Three
+relevant items surfaced only when a specific claim was searched for, and
+one of them falsified a sentence of the survey. So the survey is reliable
+for the pre-2015 literature and for the entropy line, and **incomplete for
+2016–2026 work outside the entropy line**, in particular for the Polymath11
+material and for recent preprints. A statement here of the form "no source
+does X" should be read as "none of the sources listed does X".

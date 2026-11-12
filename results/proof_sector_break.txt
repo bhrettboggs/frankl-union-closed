@@ -1,0 +1,6 @@
+# Randomised search for a sector family with mu < k-2 (proof/sector_break.py k seconds seed).
+# Not exhaustive: this is evidence of type [OBSERVED], not a certificate of non-existence.
+k=8 seed=1 seconds=150 evaluations=23039181 restarts=250233 min mu seen=6 (k-2=6) lowest mu counts=[(6, 613281), (7, 10392885), (8, 3851763), (9, 3339551)] no family with mu < k-2 found
+k=8 seed=4 seconds=150 evaluations=23028021 restarts=249969 min mu seen=6 (k-2=6) lowest mu counts=[(6, 614552), (7, 10390161), (8, 3848919), (9, 3342946)] no family with mu < k-2 found
+k=9 seed=2 seconds=150 evaluations=19607413 restarts=217222 min mu seen=7 (k-2=7) lowest mu counts=[(7, 363737), (8, 9778519), (9, 2712671), (10, 2953675)] no family with mu < k-2 found
+k=10 seed=3 seconds=150 evaluations=16111359 restarts=183003 min mu seen=8 (k-2=8) lowest mu counts=[(8, 185511), (9, 8649491), (10, 1773118), (11, 2550799)] no family with mu < k-2 found

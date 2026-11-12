@@ -1,0 +1,93 @@
+== A. Brute force, k = 3..5 ==
+k=3: sector families 1, identity violations 0, min mu 1 (k-2 = 1), mu distribution [(1, 1)]
+      min sum_e g(e) = 3, so N_max(3) = k(k-2) - min = 0
+      families with mu = k-2: 1 labeled in 1 classes
+        n=  5 labeled=  1 a_2..a_1=[] g=[1, 1, 1]
+k=4: sector families 64, identity violations 0, min mu 2 (k-2 = 2), mu distribution [(2, 8), (3, 28), (4, 24), (5, 4)]
+      min sum_e g(e) = 8, so N_max(4) = k(k-2) - min = 0
+      families with mu = k-2: 8 labeled in 4 classes
+        n=  6 labeled=  1 a_2..a_2=[0] g=[2, 2, 2, 2]
+        n=  8 labeled=  3 a_2..a_2=[2] g=[2, 2, 2, 2]
+        n= 10 labeled=  3 a_2..a_2=[4] g=[2, 2, 2, 2]
+        n= 12 labeled=  1 a_2..a_2=[6] g=[2, 2, 2, 2]
+k=5: sector families 118314, identity violations 0, min mu 3 (k-2 = 3), mu distribution [(3, 124), (4, 4074), (5, 19171), (6, 35120), (7, 32535), (8, 17840), (9, 6870), (10, 2050), (11, 455), (12, 70), (13, 5)]
+      min sum_e g(e) = 12, so N_max(5) = k(k-2) - min = 3
+      families with mu = k-2: 124 labeled in 9 classes
+        n=  7 labeled=  1 a_2..a_3=[0, 0] g=[3, 3, 3, 3, 3]
+        n=  9 labeled= 15 a_2..a_3=[2, 0] g=[1, 3, 3, 3, 3]
+        n=  9 labeled= 10 a_2..a_3=[1, 1] g=[3, 3, 3, 3, 3]
+        n= 11 labeled= 15 a_2..a_3=[2, 2] g=[3, 3, 3, 3, 3]
+        n= 11 labeled= 30 a_2..a_3=[2, 2] g=[3, 3, 3, 3, 3]
+        n= 13 labeled= 30 a_2..a_3=[3, 3] g=[3, 3, 3, 3, 3]
+        n= 15 labeled= 10 a_2..a_3=[4, 4] g=[3, 3, 3, 3, 3]
+        n= 17 labeled= 12 a_2..a_3=[5, 5] g=[3, 3, 3, 3, 3]
+        n= 27 labeled=  1 a_2..a_3=[10, 10] g=[3, 3, 3, 3, 3]
+== B. k = 5: Lemma D_5 ==
+max over all 2^10 graphs F on 5 vertices of |F| - p(F) = 3, attained by 10 labeled graphs
+   p(F) = number of 3-sets W such that F[W] has no isolated vertex
+checked a_3 >= p(F) and a_2 - a_3 <= 3 on all 118314 sector families at k=5: violations 0
+=> sum_e g(e) = 15 - a_2 + a_3 >= 12, so mu >= ceil(12/5) = 3  (true minimum 3)
+== C. k = 6: Lemma D_6 ==
+max over all 2^15 graphs F on 6 vertices of |F| - q(F) = 5, attained by 21 labeled graphs
+   q(F) = number of 4-sets W such that F[W] has no isolated vertex
+=> sum_e g(e) = 24 - 2a_2 + 2a_4 >= 14, so mu >= ceil(14/6) = 3  (true minimum 4, part D)
+== D. k = 6: search of the sector S = [6] ==
+cap 3: S 63 nodes 7051581 leaves 0 found 0 pruneA 1042177 pruneB 1218945 pruneP 1090952 closure 0 sepfail 0 kills 20192081
+        families found 0, all re-validated; classes 0; violations of a_4 >= q(F) or a_2 - a_4 <= 5: 0
+cap 4: S 63 nodes 22671085 leaves 452 found 452 pruneA 3200655 pruneB 1730047 pruneP 5393759 closure 0 sepfail 0 kills 49038043
+        families found 452, all re-validated; classes 14; violations of a_4 >= q(F) or a_2 - a_4 <= 5: 0
+        mu=4 n=  8 labeled=  1 a_2..a_4=[0, 0, 0] g=[4, 4, 4, 4, 4, 4]
+        mu=4 n= 10 labeled= 60 a_2..a_4=[1, 1, 0] g=[2, 4, 4, 4, 4, 4]
+        mu=4 n= 10 labeled= 15 a_2..a_4=[1, 0, 1] g=[4, 4, 4, 4, 4, 4]
+        mu=4 n= 10 labeled= 10 a_2..a_4=[0, 2, 0] g=[4, 4, 4, 4, 4, 4]
+        mu=4 n= 12 labeled= 60 a_2..a_4=[1, 2, 1] g=[4, 4, 4, 4, 4, 4]
+        mu=4 n= 12 labeled= 30 a_2..a_4=[0, 4, 0] g=[4, 4, 4, 4, 4, 4]
+        mu=4 n= 14 labeled= 60 a_2..a_4=[2, 2, 2] g=[4, 4, 4, 4, 4, 4]
+        mu=4 n= 14 labeled= 15 a_2..a_4=[3, 0, 3] g=[4, 4, 4, 4, 4, 4]
+        mu=4 n= 16 labeled= 20 a_2..a_4=[3, 2, 3] g=[4, 4, 4, 4, 4, 4]
+        mu=4 n= 16 labeled= 90 a_2..a_4=[3, 2, 3] g=[4, 4, 4, 4, 4, 4]
+        mu=4 n= 18 labeled= 45 a_2..a_4=[3, 4, 3] g=[4, 4, 4, 4, 4, 4]
+        mu=4 n= 20 labeled= 30 a_2..a_4=[3, 6, 3] g=[4, 4, 4, 4, 4, 4]
+        mu=4 n= 30 labeled= 15 a_2..a_4=[7, 8, 7] g=[4, 4, 4, 4, 4, 4]
+        mu=4 n= 58 labeled=  1 a_2..a_4=[15, 20, 15] g=[4, 4, 4, 4, 4, 4]
+=> min mu on the sector S = [6] is 4 = k-2
+== E. k = 7: Lemma D's ingredients without a cap ==
+1044 top-layer representatives; lower bound sum_e g(e) >= 5 + 3t - alpha(T)
+smallest value of the bound: -2 at T=1 (t=1, alpha=10); bound <= 0 for 2 representatives
+=> at k = 7 the sum method gives mu >= ceil((5 + 3t - alpha(T))/7); it proves mu >= 1 for 1042 of 1044 representatives and nothing for the rest
+== F. The families G_W ==
+k  n   sum_e g(e)   k(k-2)  N(G_W)=2^(k-1)-k-(k-2)^2   mu(G_W)=2k-5   direct
+ 5   11       13       15          2                  5   ok
+ 6   19       14       24         10                  7   ok
+ 7   35        3       35         32                  9   ok
+ 8   67      -36       48         84                 11   ok
+ 9  131     -135       63        198                 13   ok
+10  259     -358       80        438                 15   ok
+11  515     -833       99        932                 17   
+12 1027    -1816      120       1936                 19   
+=> for k >= 8, sum_e g(e) < 0 on G_W although mu(G_W) = 2k-5 >= k-2
+== F2. The families G_{W',T} = G_0 + T + {A subset of W', |A| >= 2}, |W'| = k-3 ==
+   T = all (k-2)-sets, the top layer that maximises sum_e g(e) for this lower part
+k  t=C(k,2)  N = 3*2^(k-3) - k - (k-2)(k-3) - (k-4)t   U(k) = k(k-2) - N   direct
+ 7     21                          -42                     77   ok, mu = 17
+ 8     28                          -54                    102   ok, mu = 24
+ 9     36                          -39                    102   ok, mu = 32
+10     45                           48                     32   ok, mu = 41
+11     55                          300                   -201   ok, mu = 51
+12     66                          906                   -786   
+13     78                         2247                  -2104   
+=> for k >= 11 and EVERY top layer T there is a sector family with top layer T and
+   sum_e g(e) < 0 (replace 'all (k-2)-sets' by T: the sum only decreases), so the
+   sum method gives no positive lower bound on mu for any T
+== G. Power construction (Proposition C4) ==
+U2[3]: r=1, K=3, |F^r|=5, added co-singletons 0, mu(F^r)=1 = mu(F)*n^(r-1) = 1, mu(G)=1
+U2[3]: r=2, K=6, |F^r|=25, added co-singletons 0, mu(F^r)=5 = mu(F)*n^(r-1) = 5, mu(G)=5
+U2[3]: r=3, K=9, |F^r|=125, added co-singletons 0, mu(F^r)=25 = mu(F)*n^(r-1) = 25, mu(G)=25
+M4: r=1, K=4, |F^r|=6, added co-singletons 2, mu(F^r)=2 = mu(F)*n^(r-1) = 2, mu(G)=2
+M4: r=2, K=8, |F^r|=36, added co-singletons 4, mu(F^r)=12 = mu(F)*n^(r-1) = 12, mu(G)=14
+M4: r=3, K=12, |F^r|=216, added co-singletons 6, mu(F^r)=72 = mu(F)*n^(r-1) = 72, mu(G)=76
+B(2,3): r=1, K=5, |F^r|=7, added co-singletons 2, mu(F^r)=3 = mu(F)*n^(r-1) = 3, mu(G)=3
+B(2,3): r=2, K=10, |F^r|=49, added co-singletons 4, mu(F^r)=21 = mu(F)*n^(r-1) = 21, mu(G)=23
+B(2,3): r=3, K=15, |F^r|=343, added co-singletons 6, mu(F^r)=147 = mu(F)*n^(r-1) = 147, mu(G)=151
+=> g_G(e) = g_F(e) n^(r-1) + (added co-singletons containing e) - (added avoiding e) <= g_F(e) n^(r-1) + rk
+ALL SECTOR CHECKS PASS
