@@ -25,6 +25,7 @@ Nothing here proves or verifies Frankl's conjecture.
 | 7 | F | Referee the complete proofs of Lemma E, Theorem F1 and Proposition F2; test each numbered step of F1 by brute force on all pairs (G₀, G₁) for M₄ and M₆. | Sonnet | Different model from the author; the proof has many cases and explicit counts, which a bounded brute-force check can test step by step. | **Yes.** No flaw found. Its own enumeration gave 62 and 1,278 pairs and 58 and 1,272 valid extensions for t = 2, 3, the same as `proof/extensions.py`. It confirmed that the only pairs satisfying the proof's hypotheses (α) and (β) are the non-separating ones the proof identifies (4 and 6 pairs). It did not run t = 4; `proof/extensions.py` does. It asked for the validity argument in F2 to be written out, which is done. |
 | 8 | D | Referee the complete proofs of D1, D2 and D3, and test them by brute force. | Sonnet | Different model from the author; short proofs with parity bookkeeping, which is where slips happen. | **Yes.** No flaw found. Its script tested D2 for every J and D3(a), (b) on all 4, 304 and 235,749 valid families at k = 3, 4, 5. It pointed out that D3(c) is vacuous on these sizes (no family has μ ≤ 0), so (c) rests on the proof alone; and that D1's last sentence needs the base case k = 3, now stated. It completed the "Z join-irreducible ⇒ degree-1" step from Lemma C, as now written. |
 | 9 | D | Referee the complete proofs of Lemma S and Proposition D4; test every numbered claim by brute force. | Sonnet | Same reason; the proof is an adaptation of a published argument, so a step-by-step check against data is the main safeguard. | **Yes.** No flaw found. Its script tested (S1)–(S4), both cases of D4 and the corollary on all valid families at k = 3, 4, 5 and every tie-breaking order, with 0 violations. (S5) was exhaustive only for subfamilies of at most 10 members and sampled otherwise. `proof/poonen.py` part 5 repeats the check of D4 and of the step c(a) ≥ φ + k − 1. |
+| 10 | E | Referee the complete proof of Proposition E1 and Corollaries E2, E3 (Lemma S taken as given, since it was refereed in delegation 9); answer three pointed questions about the use of the cited constant-fraction theorem. | Sonnet | Different model from the author; a short proof whose risk is misuse of a cited theorem's hypotheses. | **Yes.** No flaw found. It confirmed that the cited theorem needs only "union-closed with a non-empty member", so applying it to the sub-family B is legitimate, and that the strict inequality in E2 is exactly what is needed. Its script covered k = 3, 4 only; `proof/growth.py` covers k = 3, 4, 5. |
 
 No proof step, novelty verdict or choice of claim was delegated.
 
@@ -46,6 +47,7 @@ I did not find it).
 | N8 | Deletion statements W1–W3 about μ(G) versus μ(G − x). | Bruhn–Schaudt §4 (induction paragraph), Tian Prop. 6.2 and Problem 6.4 (projection along a critical coordinate in a minimal counterexample), re-read. | **PARTLY KNOWN in spirit.** That deleting an element does not behave monotonically is the standard reason induction fails; Tian's projection formula is Lemma E read backwards. The specific statements and counterexamples were NOT FOUND. |
 | N9 | D2, D3: deleting join-irreducible members plus parity; consequences of Frankl's conjecture for a valid family with μ = 0. | Norton–Sarvate via Bruhn–Schaudt §7; Tian Lemma 2.2 and Prop. 7.2 (critical join-cover number ≥ 3); Bouchard Thm 1.4, Lemma 2.5, Thm 2.6; all re-read. | **KNOWN device**, used in every minimal-counterexample paper. Those papers apply it to a smallest counterexample to Frankl's conjecture. Its use for families at margin 0 under the hypothesis that Frankl's conjecture holds was NOT FOUND, and is a routine transfer. |
 | N10 | D4: 3μ ≥ 4k − 4 − n for valid families, given Frankl's conjecture on k − 1 points. | Bruhn–Schaudt Lemma 18 and Thms 22–24 (Lo Faro; Roberts–Simpson; Falgas-Ravry; Hu); Tian Lemma 2.4 and Prop. 2.5 (the staircase argument, with proof), re-read. Hu, Discrete Math. 346 (2023) 113430 was **not opened**. | **PARTLY KNOWN.** The argument is Hu's staircase as reproduced by Tian; at μ = −1 the inequality is exactly the Lo Faro bound n ≥ 4k − 1. The statement for general μ, and its tightness on the small minimisers, were NOT FOUND. Hu's paper may contain it; I rate that about 35% likely. |
+| N11 | E1, E2: (1+κ)μ ≥ 2k − 2 − (1−κ)n; in particular every separating family with fewer than (1+√5)(k−1) members has an element in strictly more than half. | Web search "union-closed sets conjecture holds for separating families with at most c·m sets small families after Gilmer constant improvement of Maßberg bound"; Cambie's 2023 survey [arXiv:2306.12351](https://arxiv.org/abs/2306.12351) read in full (no small-family result); Bruhn–Schaudt Thms 23–24 (2m; Hu's converse); Maßberg's bound via the Section A sweep. Hu (2023) not opened. | **NOT FOUND.** The two ingredients are published (the staircase argument; the constant-fraction theorem). Their combination is a short step, so I rate it about 50% likely that it appears somewhere, most plausibly in Hu (2023) or a 2023–2026 preprint. If new, it improves the range "n ≤ 2k(1 + o(1))" of Falgas-Ravry and Maßberg to n < 3.236(k − 1) for large k. |
 
 Standing notes from the survey that every later check must take into
 account:
@@ -902,6 +904,141 @@ any with μ ≤ 0 has n ≥ 28.
 Confidence that rung 1 is true: about 85%, essentially my confidence in
 Poonen's conjecture; the data here (k ≤ 7, and n ≤ 4k − 5 for k ≤ 13) do
 not reach the families where it could fail.
+
+### Section E. A growing lower bound (rungs 2 and 3)
+
+**Short answer.** No unbounded lower bound for min μ(k) was proved, and
+none can be without proving Frankl's conjecture (B.4). What was proved is
+growth on a slice: **for every k, every valid family with n ≤ c·k members,
+c < 1 + √5, has μ ≥ ((2 − 0.618c)k − 2)/1.382**, unconditionally. The
+argument cannot be pushed past n ≈ 4k even assuming Frankl's conjecture,
+and the families that attain ⌈k/2⌉ at large k have exponentially many
+members, so rung 3 is out of its reach. The exact obstruction is stated in
+E.3.
+
+Certificates: `results/proof_growth.txt` (output of `proof/growth.py`) and
+`results/proof_rung3_break.txt` (output of `proof/rung3_break.py`).
+
+#### E.1 A growing bound on small families [PROVED, unconditional]
+
+Let T_κ be the statement that every union-closed family with a non-empty
+member has an element in at least κ|F| of its members. T_ψ with
+ψ = (3 − √5)/2 is a theorem (Alweiss–Huang–Sellke, EJC 2024; Sawin;
+`PROOF_SURVEY.md` §1.1). T_{1/2} is Frankl's conjecture.
+
+**Proposition E1.** If T_κ holds for some κ ∈ (0, 1/2], then every valid
+family G on k points with n members satisfies
+
+ (1 + κ)·μ(G) ≥ 2k − 2 − (1 − κ)·n.
+
+*Proof.* As for D4, with T_κ in place of FC(k−1). Let u_k be a most
+frequent element, B the members avoiding it, |B| = (n − μ)/2. If B = {∅}
+then μ = n − 2 and n ≥ k + 1 by Lemma S, and the claim is n ≥ k + κ.
+Otherwise T_κ gives φ = max_e c_B(e) ≥ κ|B| > 0, Lemma S gives a with
+c(a) ≥ φ + k − 1, and μ ≥ 2c(a) − n ≥ κ(n − μ) + 2k − 2 − n. ∎
+
+**Corollary E2 [PROVED, every k, no hypothesis].** With κ = ψ, where
+1 − ψ = (√5 − 1)/2:
+
+- every valid family on k points with **n < (1 + √5)(k − 1)** members has
+  μ ≥ 1;
+- every valid family with n ≤ c·k members, c < 1 + √5, has
+  μ ≥ ((2 − (1 − ψ)c)k − 2)/(1 + ψ), which tends to infinity with k.
+
+The proof uses only "separating, union-closed, contains ∅", so the first
+item says: **a separating union-closed family with fewer than
+3.236(k − 1) members has an element in strictly more than half of them.**
+For comparison, the published range is n ≤ 2k (Falgas-Ravry) and
+n ≤ 2(k + k/(log₂k − log₂log₂k)) (Maßberg), which is below 3.236k once k is
+in the hundreds. Hu's theorem (Bruhn–Schaudt Thm 24) says that a range
+c·k with c > 2 for Frankl's conjecture would imply a constant fraction
+(c − 2)/(2(c − 1)) for all families; E2 is the converse direction, from the
+constant fraction to a range, and the two are consistent (c = 3.236 gives
+0.276 < ψ).
+
+**Corollary E3.** κ = 1/2 gives D4, 3μ ≥ 4k − 4 − n, a theorem for
+k ≤ 13 and conditional on Frankl's conjecture beyond.
+
+Checks. [PROVED-EXH against data] Both inequalities hold on all valid
+families at k = 3, 4, 5. Ranges covered (largest n for which the bound
+forces the stated μ for every smaller n):
+
+| k | μ ≥ 1, κ = ψ | μ ≥ 1, κ = ½ | μ ≥ ⌈k/2⌉, κ = ψ | μ ≥ ⌈k/2⌉, κ = ½ | size of M_k or B(2,…,2,3) |
+|---|---|---|---|---|---|
+| 8 | 22 | 27 | 15 | 18 | 20 |
+| 10 | 29 | 35 | 20 | 23 | 37 |
+| 12 | 35 | 43 | 24 | 28 | 70 |
+| 13 | 38 | 47 | 25 | 29 | 71 |
+| 20 | 61 | (75) | 41 | (48) | 1,034 |
+| 40 | 126 | (155) | 83 | (98) | 1,048,596 |
+
+Entries in parentheses assume Frankl's conjecture.
+
+#### E.2 Why this is not rung 2
+
+Rung 2 asks for min μ(k) ≥ f(k) → ∞ over **all** valid families. E2 gives
+it only for n = O(k).
+
+1. [PROVED, B.4] Any f that is eventually ≥ 0 gives Frankl's conjecture.
+   So an unconditional rung 2 is at least as hard as the conjecture.
+2. Even assuming Frankl's conjecture, I have no proof of rung 2 or of
+   rung 1. The three tools of this phase each stop for an identified
+   reason:
+   - *Averaging* (Section C): vacuous for k ≥ 11 even with all
+     co-singletons present (C5).
+   - *Staircase* (D4, E1): the gain is the k − 1 extra members of S, a
+     quantity linear in k, set against |B| ≈ n/2. For n ≥ 4k the bound is
+     ≤ 0 whatever κ ≤ 1/2 is. The extremal families at large k have
+     n ≈ 2^{k/2}.
+   - *Deletion with Frankl's conjecture* (D2, D3): gives μ ≥ j − 2, growth
+     only for families with many join-irreducible co-singletons. M_k has
+     j = k/2, so this is the one tool that sees the right order of
+     magnitude on the extremal family (it gives k/2 − 2 against the true
+     k/2), but a family can have j ≤ 2.
+3. [CONJECTURE] min μ(k) → ∞. Confidence about 60%. Best argument
+   against: nothing rules out a sequence of large, locally Boolean valid
+   families with μ bounded; the valid class excludes power sets only
+   through the no-singleton rule, and doubling every point of a power set
+   and adding k/2 co-singletons (that is M_k) already costs only k/2. A
+   cleverer way to separate the doubled points might cost O(1).
+
+#### E.3 Rung 3: where ⌈k/2⌉ fails to be provable
+
+What is proved toward min μ(k) = ⌈k/2⌉:
+
+- **Upper bound, all k ≥ 4** [PROVED, `docs/THEORY.md` A.9].
+- **Lower bound for small families** [PROVED]: μ ≥ ⌈k/2⌉ for every valid
+  family with n ≤ 4k − 3⌈k/2⌉ − 2 members when k ≤ 13 (D5), and with
+  n < 2.118k − 1.9 for every k (E2; column 4 of the table).
+- **Lower bound one step above M₂ₜ** [PROVED]: Theorem F1.
+- **Lower bound for k ≤ 7** [PROVED-EXH]: the table.
+
+Where it fails: the lower bound for families with more than about 2.5k
+members. At k = 8 that means n = 19 and n ≥ 21 (D.3), which includes
+everything near M₈ except M₈'s own size. The staircase argument cannot
+help there, and no argument in this phase distinguishes a family with
+n ≈ 2^{k/2} from a power set closely enough to see a margin of k/2.
+
+**Attempt to break rung 3.** A randomised search over valid families
+(union-closures of generator lists, started from M_k, B(…), H_t, random
+block families and random lists, with local moves; 150 s per k) found no
+family with μ < ⌈k/2⌉ at k = 8, 9, 10, 11 and re-found the minimum at
+k = 5, 6, 7. [OBSERVED]; the search caps families at 3,000 members and is
+not tuned, so this is weak evidence.
+
+[CONJECTURE] min μ(k) = ⌈k/2⌉ for all k ≥ 4. Confidence about 45% (it
+contains Frankl's and Poonen's conjectures; conditional on both, about
+60%). The k = 8 value, min μ(8) = 4, I put at about 85%.
+
+#### E.4 Summary of Section E
+
+| Claim | Tag |
+|---|---|
+| E1: (1+κ)μ ≥ 2k − 2 − (1−κ)n given T_κ | [PROVED] |
+| E2: μ ≥ 1 for n < (1+√5)(k−1); linear growth of μ on slices n ≤ ck, c < 1+√5; every k | [PROVED], unconditional; novelty NOT FOUND, about 50% |
+| Rung 2: min μ(k) → ∞ | **Not proved.** Implies Frankl's conjecture. |
+| Rung 3: min μ(k) = ⌈k/2⌉ | **Not proved.** Lower bound known for k ≤ 7, for small families, and above M₂ₜ only. |
+| No family below ⌈k/2⌉ found at k = 8..11 | [OBSERVED], randomised |
 
 ## 4. Report
 

@@ -1,0 +1,6 @@
+# Randomised search for a valid family with mu < ceil(k/2) (proof/rung3_break.py k seconds seed).
+# Not exhaustive: evidence of type [OBSERVED], not a certificate. Families are capped at 3000 members.
+k=8 seed=8 seconds=150 evaluations=4780504 restarts=33394 min mu seen=4 (ceil(k/2)=4) lowest mu counts=[(4, 30521), (5, 188664), (6, 258665), (7, 324206)] no valid family with mu < ceil(k/2) found
+k=9 seed=9 seconds=150 evaluations=3278863 restarts=25546 min mu seen=5 (ceil(k/2)=5) lowest mu counts=[(5, 44021), (6, 238551), (7, 154269), (8, 158535)] no valid family with mu < ceil(k/2) found
+k=10 seed=10 seconds=150 evaluations=1953281 restarts=11684 min mu seen=5 (ceil(k/2)=5) lowest mu counts=[(5, 4340), (6, 57945), (7, 49718), (8, 34443)] no valid family with mu < ceil(k/2) found
+k=11 seed=11 seconds=150 evaluations=1515773 restarts=10726 min mu seen=6 (ceil(k/2)=6) lowest mu counts=[(6, 9393), (7, 93650), (8, 45077), (9, 18504)] no valid family with mu < ceil(k/2) found
