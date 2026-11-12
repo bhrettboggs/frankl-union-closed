@@ -615,8 +615,8 @@ The ledger tags Lemma D′ [PROVED]. Before keeping any tag here, I checked:
      identity, (ii), (iii) and the D′ inequality hold. The minimum slack
      α(T) − (3t + 5 − 7μ) is 34, so the bound is far from tight on these
      sparse top layers.
-   - At cap 3, my re-closure of s = 7 without Lemma D (D.2) closed 573
-     of the 578 Lemma-D-covered reps by search, all with 0 found. The 5
+   - At cap 3, my re-closure of s = 7 without Lemma D (D.2) closed 575
+     of the 578 Lemma-D-covered reps by search, all with 0 found. The 3
      reps it did not finish are covered.
 
 On this evidence, Lemma D and D′ keep the tag **[PROVED-EXH]** (hand
@@ -629,3 +629,283 @@ the 201 cap-4-covered reps were also searched to completion (454,490,937
 nodes, 0 found). That run is not in `results/`, so it cannot be audited
 here. It is a consistency check, not something the k = 7 result depends
 on.
+
+---
+
+## D. Conjecture C6 and the results table
+
+### D.1 Conjecture C6
+
+**What the repository says.** C6 appears only in the README results table,
+in the k = 8 entry "open (C6 predicts 4)", and in the 2026-11-09 ledger,
+§6: "minμ(8) ≥ 4 (C6 predicts 4, attained by M₈)". That is all. **The
+general statement of C6 is not in the repository** **[UNPROVED-IN-REPO]**.
+It was in an earlier handoff that was never committed, so I cannot state
+it for general k without guessing.
+
+**What can be stated precisely, as the k = 8 instance:**
+
+> **C6 at k = 8.** min μ(8) = 4, attained by M_8.
+
+This is equivalent to a lower bound plus a known construction:
+
+- **Upper bound [PROVED].** μ(M_8) = 4 by Proposition A.9. It is also a
+  calibration check: `M8 (n,mu,V) = (20, 4, 5)`. So min μ(8) ≤ 4 already.
+- **Remaining content.** No valid family on [8] has μ ≤ 3. By Corollary
+  B.4, the degree-1 sector at k = 8 has min μ = min μ(7) + 1 = 5. So C6 at
+  k = 8 is exactly the statement **"every core sector s = 2..8 at k = 8 is
+  closed at cap 3."** Status: s = 2 has 99 of 100 reps closed, and
+  s = 3..8 have not been started (D.2, row k = 8).
+- **"Attained by M_8" says nothing about uniqueness.** Whether other μ = 4
+  families exist at k = 8 is not part of the k = 8 claim as recorded. A
+  cap-4 classification would be needed. Among the constructions in this
+  repo, M_8 is the only μ = 4 one at k = 8: other B(…) with block sizes
+  ≥ 2 have fewer blocks and so μ = 8 − r ≥ 5, and lifts of the k = 7
+  attainers have μ = 5.
+
+**Not C6.** The data fit min μ(k) = ⌈k/2⌉ for k = 4..7 **[OBSERVED, k =
+4..7]**. At k = 3 the value is 1, below ⌈3/2⌉ = 2. Proposition A.9 gives
+min μ(k) ≤ ⌈k/2⌉ for every k ≥ 4. I do not know whether C6 is this
+statement, a variant, or something else (confidence that C6 is "min μ(k)
+= ⌈k/2⌉ for k ≥ 4": about 40%). I have not written it as C6. The bound
+μ ≥ 1 on valid families is the valid-family case of Poonen's open
+strict-majority conjecture (`docs/LITERATURE.md`). It is a different
+statement, and the table supports it for k = 3..7 only.
+
+### D.2 The README results table, row by row
+
+The certificates referred to are in `results/`. "This session" means
+2026-11-12 (this document). Re-runs done here were made in a scratch copy
+and are not added to `results/`.
+
+#### Row k = 3: min μ = 1, "exhaustive enumeration"
+
+- **Claim.** min μ(3) = 1. The 2026-11-09 ledger adds 1 attainer class,
+  U2[3].
+- **Rests on.** Brute force with `enum_uc_leaves(3)` + `is_valid`: 8
+  leaves, 4 valid families. `run_A_verify.py` checks `k=3 minmu` = 1.
+  Lemma C is not needed, since this is a full enumeration.
+- **Certificate.** No file in `results/`. It is asserted by the
+  calibration suite, which every session runs.
+- **This session.** Reproduced: min 1, 1 attainer, 1 class.
+- **Tag.** [PROVED-EXH] via calibration. Certificate file missing (E.2).
+
+#### Row k = 4: min μ = 2, "exhaustive enumeration"
+
+- **Claim.** min μ(4) = 2, with 48 labeled attainers in 8 classes.
+- **Rests on.** `enum_uc_leaves(4)`: 378 leaves, 304 valid.
+  `run_A_verify.py` checks `k=4 mu-dist` = {2: 48, 3: 128, 4: 96, 5: 28,
+  6: 4}.
+- **Certificate.** No file. The minimum and the count 48 are calibration
+  checks. The class count 8 is not checked by any script in the repo.
+- **This session.** Reproduced: min 2, 48 attainers (44 cores and 4
+  degree-1), 8 classes.
+- **Tag.** [PROVED-EXH] via calibration. The class count was reproduced
+  only this session (E.2).
+
+#### Row k = 5: min μ = 3, "exhaustive (2,244 μ=3 cores, Python ≡ C node-for-node)"
+
+- **Claim.** min μ(5) = 3. There are 2,244 μ = 3 cores. The ledger adds 51
+  attainer classes.
+- **Rests on.** Either of two routes:
+  - brute force with `enum_uc_leaves(5)`; or
+  - Lemma C + A.10–A.12 + `mu_search` at caps 2 and 3, s = 2..5, with the
+    degree-1 sector handled by B.4 using min μ(4) = 2.
+- **Certificate.** **None in `results/`, and no calibration check.**
+- **This session.** Reproduced both routes:
+  - Brute force: 235,749 valid families, min μ 3, 2,484 attainers (2,244
+    cores + 240 = 5 · 48 degree-1), 51 classes.
+  - Search: `mu_search.py` and `./mu_search` (pw 0) at cap 3 visit exactly
+    226,410 nodes each and find the same 2,244 families. `mu_search2`
+    (pw 1) finds the identical set.
+- **Tag.** [PROVED-EXH] in substance, since it is reproducible from repo
+  code in about 10 s, but **flagged: no certificate file** (E.2).
+
+#### Row k = 6: min μ = 3, "exhaustive; 120 attainers, all in the orbit of M₆"
+
+- **Claim.** min μ(6) = 3. The attainers are exactly the 120 labeled
+  copies of M_6 (6!/|Aut M_6| = 720/6).
+- **Rests on.**
+  - Degree-1 sector: μ ≥ min μ(5) + 1 = 4 (B.4 + row k = 5).
+  - Core sectors s = 2..6: `mu_search2`, all labeled S, cap 2 gives 0 and
+    cap 3 gives 120.
+  - Upper bound: μ(M_6) = 3 (A.9, calibration).
+- **Certificate.** **None in `results/`.**
+- **This session.** Reproduced: cap 2 gives 0 found (3,353,166 nodes).
+  Cap 3 gives 120 distinct valid families (11,029,280 nodes), all with
+  μ = 3 and all canonically equal to M_6.
+- **Tag.** [PROVED-EXH] in substance. **Flagged: no certificate file**
+  (E.2).
+
+#### Row k = 7: min μ = 4, "orbit-quotient search over all co-singleton sectors s=2..7, plus Lemma D for the 20 densest representatives; s=2..6 re-closed with `mu_search2` (2026-11-09)"
+
+- **Claim.** min μ(7) = 4.
+- **Rests on.**
+  - Degree-1 sector: μ ≥ min μ(6) + 1 = 4 (B.4 + row k = 6).
+  - Core sectors s = 2..6 closed at cap 3, by A.10 + A.11 + the logs
+    below.
+  - Core sector s = 7 closed at cap 3. See the separate entry below.
+  - Upper bound: μ(B(2,2,3)) = μ(lift M_6) = 4 (A.9, B.3, calibration).
+- **Certificates.** `results/orb2_k7_s2.log` … `orb2_k7_s6.log`. Audited
+  this session against fresh `./orbits 7 S` output:
+
+  | s | reps | R lines | nodes | found |
+  |---|---|---|---|---|
+  | 2 | 68 | 68 | 2,569,664 | 0 |
+  | 3 | 562 | 562 | 2,452,362 | 0 |
+  | 4 | 2,910 | 2,910 | 2,046,123 | 0 |
+  | 5 | 6,564 | 6,564 | 2,285,584 | 0 |
+  | 6 | 5,096 | 5,096 | 18,599,829 | 0 |
+
+  Every rep is present, with matching T and orbit size. Orbit sizes sum
+  to 2^NC5. There are no FAM lines.
+
+- **Sector s = 7 at cap 3: the README's stated support is not
+  traceable.** No cap-3 s = 7 log is in `results/`, and the figure "Lemma D
+  for the 20 densest representatives" cannot be checked against anything
+  in the repo.
+
+  The claim **is** supported by a different certificate path, because
+  closing a sector at cap 4 also closes it at cap 3:
+
+  - `results/orb3_k7_s7_c4.log`: 843 reps searched at cap 4, 0 found.
+  - The other 201 reps are closed by Lemma D′ at cap 4 (`L` lines),
+    certified by `results/lemma_d2_k7_s7_cap4.txt` (Section C.7).
+
+  Both files were audited this session.
+
+  **This session's cap-3 re-closure.** I ran the README's
+  `orbit_driver3.py 7 7 …` in a scratch copy, without Lemma D. It did not
+  finish: it ran on one core from about 14:48 to 15:40, when its
+  environment was stopped. Final state:
+  - 1,041 of 1,044 reps closed, 0 found, 4,955,177,226 nodes, summed over
+    `R` lines. Rep 1039 (t = 19) alone took 2,954,369,632 nodes, and rep
+    1040 (t = 18) took 126,064,078.
+  - Reps 1041–1043 (t = 19, 20, 21) are open. Rep 1041 had 15 sub-shard
+    lines recorded when the run stopped. No total is given for it, because
+    summing nested sub-shard lines counts nodes more than once.
+  - All three open reps are Lemma-D-covered at cap 3.
+
+  So the cap-3 route also closes s = 7, with Lemma D needed for at most
+  these 3 reps. The README's "~11 min single-core" for this command was
+  **not** reproduced: about 52 min was not enough.
+
+- **Tag.** **[PROVED-EXH]**, via the cap-3 logs for s = 2..6, the cap-4
+  log plus the Lemma D′ certificate for s = 7, and the k = 6 row for the
+  degree-1 sector. Flag: the README's own description of the s = 7 support
+  ("20 densest", cap 3) has no certificate (E.2).
+
+#### Row k = 8: "open (C6 predicts 4)"; "deg-1 sector has μ ≥ 5; core sector s=2 at cap 3 has 99/100 orbit reps closed, 0 found; s=3..8 not started"
+
+Each part separately:
+
+- **min μ(8) ≤ 4.** [PROVED] by A.9 (M_8). The table writes "open"
+  because the lower bound is open.
+- **"Degree-1 sector has μ ≥ 5."** [PROVED] by B.4, conditional on row
+  k = 7. It holds with equality (B.4 item 2).
+- **"Core sector s = 2 at cap 3 has 99/100 orbit reps closed, 0 found."**
+  Certificate: `results/k8_s2_c3_partial.log`. Audited this session:
+  - `./orbits3 8 3` gives 100 reps, orbit sizes summing to 8,192 = 2^13,
+    and rep 84 = T 5461 with orbit size 2.
+  - The log has 99 `R` lines (all reps except 84), 0 found, 1,918,548,278
+    nodes, and orbit sizes summing to 8,190. 68 reps cost 0 nodes.
+  - The deepest sub-shard used by any closed rep is P = 40 (rep 34), so
+    the 64-bit defect in D.3 does not affect these 99 reps.
+  - `mu_search3.c` differs from `mu_search2.c` only in array sizes and a
+    k-range check (diffed this session). So A.10 applies to it.
+  - Tag: **[PROVED-EXH] for those 99 reps.** Sector s = 2 is open.
+- **"s = 3..8 not started."** Consistent with `results/`: no logs.
+- **The rep-84 sub-shard records in that log are partly invalid.** See
+  D.3. This does not change any closed claim, but the resume instructions
+  in the 2026-11-09 ledger §6 must not be followed as written.
+
+### D.3 Defect: prefixes of more than 63 bits (affects k = 8 rep 84 only)
+
+`mu_search.c`, `mu_search2.c` and `mu_search3.c` store the forced-prefix
+bitmap in `static long long PREF_BITS` and parse it with `atoll(argv[8])`.
+`orbit_driver6.py` passes Python integers of up to P bits. For k = 8,
+s = 2, NC = 181, and rep 84's sub-shards reach P = 67.
+
+- A value of 2^63 or more saturates to LLONG_MAX, i.e. 63 one-bits.
+- For i ≥ 64, `PREF_BITS >> i` is undefined behavior in C.
+
+**Confirmed this session.** `./mu_search3 8 3 2 1 2000000 3 13 B`, with
+B = 2^64 + 5461, returns at once with 0 nodes, exactly like B = 8191 and
+B = LLONG_MAX. With B = 5461, the true rep 84, it hits the node limit.
+
+**Extent, in `results/k8_s2_c3_partial.log`:**
+
+- Rep 84 has 1,120 `SUB` lines. 663 of them have P > 63 (497 with bits
+  ≥ 2^63).
+- Counting the aggregate lines built on them, **697 lines are invalid and
+  423 are clean** (clean lines have P ≤ 61).
+- The 2026-11-09 ledger says "Top-level shards 5, 6 and 7 are done". The
+  log shows completion lines (P = 16) only for **shards 6 and 7**.
+  - Shard 5 has no completion line. Most of its records are at P = 64 and
+    P = 67, which are invalid.
+  - Shard 0 has records at P = 22..37, all clean, and no completed P = 19
+    sub-shard, as the ledger says.
+
+Fixing this is a code change, so it is outside this phase. Options: parse
+the prefix as a decimal string into a multi-word bitmap, or cap the driver
+at P ≤ 63. Until it is fixed, rep 84 must be re-run from the clean records
+only. The 99 closed reps and every k ≤ 7 run (P ≤ 21) are unaffected.
+
+### D.4 Other claims in the README "Results" section
+
+| Claim | Support | Tag |
+|---|---|---|
+| k = 7: exactly 7 attainer classes, 11,340 labeled | 6 core classes in `results/k7_mu4_core_classes.txt` (10,500 labeled), plus lift(M_6) (840; B.4 item 3). The core classes come from the cap-4 logs s = 2..4, with s = 5..7 at 0 (s = 7 partly via Lemma D′). This session `classify.py` regenerated the class file byte for byte. | [PROVED-EXH] |
+| Classes over k = 3..7: 1, 8, 51, 1, 7 | k = 3..5: brute force, reproduced this session with no certificate file. k = 6: row k = 6. k = 7: above. | [PROVED-EXH] for k = 7; k = 3..6 reproducible, no file (E.2) |
+| H_t valid at k = 2t+1 with μ = t+1 | Proposition H (2026-11-09 ledger §4, hand proof). `hub_family.py` checks t = 1..5, and the bootstrap re-runs it. H_3 is class 5 (checked this session). | [PROVED] |
+| H_t "matches the block-family bound" | μ(H_t) = t + 1 = ⌈k/2⌉ = μ(B(2,…,2,3)) by A.9 | [PROVED] |
+| μ ≥ 1 on valid families, k = 3..7 | Rows k = 3..7. This is the valid-family case of Poonen's conjecture (`docs/LITERATURE.md`). | [PROVED-EXH], k = 3..7 only |
+
+Naming note, from `docs/LITERATURE.md`: "block" in B(…) clashes with
+Poonen's term "block". The code name `block_family` is unchanged here.
+
+---
+
+## E. Open items
+
+### E.1 [UNPROVED-IN-REPO]
+
+1. **The general statement of Conjecture C6** (D.1). Only its k = 8
+   prediction is recorded ("min μ(8) = 4, attained by M_8"). I need the
+   earlier handoff that stated C6. This is the only unproved item:
+   - Lemma C, the degree-1 reduction (B.2–B.4), Proposition A.9 and the
+     search-space proposition A.10 are proved here.
+   - Lemma D and D′ are proved, up to the exhaustive graph check C.3.
+
+### E.2 Claims that are true and reproducible but have no certificate file in `results/`
+
+These are not gaps in any proof. Each claim was re-derived this session
+with the repository's own code, but `results/` holds nothing to audit
+later.
+
+1. Rows k = 5 and k = 6 in full, and the attainer class counts 8 and 51
+   for k = 4 and k = 5. Rows k = 3 and 4 are covered by calibration checks.
+2. The output of `lemma_d_check` (C.3). It is recorded only as the
+   expected output in the README.
+3. The README's description of the k = 7, s = 7 cap-3 closure ("Lemma D
+   for the 20 densest representatives"). Row k = 7 stands on the cap-4
+   certificates instead (D.2).
+4. 2026-11-09 ledger consistency runs:
+   - the 181 Lemma-D′-covered reps also searched at cap 4;
+   - the direct labeled counts 2,520, 5,040 and 2,940;
+   - the k = 8 top-layer orbit counts for s = 3..8.
+
+### E.3 Defects and discrepancies found while auditing
+
+1. The 64-bit prefix limit in `mu_search*.c`. It invalidates 697 of rep
+   84's 1,120 sub-shard lines at k = 8 (D.3).
+2. The ledger says k = 8 rep 84 shard 5 is done. The log shows it is not
+   (D.3).
+3. The README says re-closing k = 7, s = 7 at cap 3 takes "~11 min
+   single-core". This session about 52 min closed 1,041 of 1,044 reps
+   and did not finish (D.2).
+4. The header comment of `lemma_d2.c` still carries the cap-3 threshold
+   text (C.6). Cosmetic.
+5. The docstring of `mu_search.py` contains `\{`, which triggers a
+   `SyntaxWarning` (invalid escape sequence) under Python 3.12+.
+   Harmless, but noisy.
