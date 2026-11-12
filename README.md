@@ -10,9 +10,9 @@ A family is **valid** at level *k* if it is union-closed on [k], contains ∅ an
 
 ## Context and prior work
 
-This repository does **not** re-verify Frankl's conjecture for small universes; that is already known. It studies the margin μ and its extremal families, a question the verifications below don't directly answer. Whether these minimum margins already appear elsewhere in the literature has not yet been checked.
+This repository does **not** re-verify Frankl's conjecture for small universes; that is already known. It studies the margin μ and its extremal families, a question the verifications below don't directly answer. A literature check (2026-11-12, [`docs/LITERATURE.md`](docs/LITERATURE.md)) found no prior computation of these minimum margins or their attainers; the lower bound μ ≥ 1 on this class is the case of Poonen's open strict-majority conjecture.
 
-- **Small universes.** Bošnjak and Marković proved the conjecture for universes of at most 11 elements, and Živković and Vučković gave a computer-assisted proof for 12 elements ("The 12-element case of Frankl's conjecture", preprint, 2012).
+- **Small universes.** Bošnjak and Marković proved the conjecture for universes of at most 11 elements, and Vučković and Živković gave a computer-assisted proof for 12 elements ("The 12-element case of Frankl's conjecture", IPSI BgD Transactions on Internet Research 13(1), 2017; preprint 2012).
 - **Small families.** Combined with Lo Faro's lower bound on the size of a minimal counterexample (also Roberts and Simpson, 2010), this implies the conjecture for families with at most about 50 sets. See Bruhn and Schaudt, *The Journey of the Union-Closed Sets Conjecture*, Graphs and Combinatorics 31 (2015), for a survey.
 - **Constant-fraction bounds.** Gilmer (arXiv:2211.09055, 2022) proved the first constant lower bound (0.01). Alweiss, Huang and Sellke (Electron. J. Combin. 31(3), 2024) raised it to (3−√5)/2 ≈ 0.38, and others have since nudged it slightly higher (e.g. Jiang, arXiv:2609.08291, 2026: 0.38288525).
 - **Related computation.** Pulaj, Raymond and Theis (Electron. J. Combin. 23(3), 2016) compute the minimum top frequency over union-closed families of a given size by integer programming; those families may contain singletons, so the margin question here is different.

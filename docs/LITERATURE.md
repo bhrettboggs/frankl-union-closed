@@ -148,4 +148,35 @@ Confidence that none of the three families appears in the literature under anoth
 
 ## Section C. Verdict
 
-*(pending)*
+### C.1 Verdict: NEW (confidence about 75%)
+
+| Row of the table | Status in the literature found |
+|---|---|
+| min μ(k) = 1, 2, 3, 3, 4 for k = 3..7 [PROVED-EXH] | **Not found.** Only the lower bound min μ(k) ≥ 1 is *predicted*, by Poonen's Conjecture 14, which is open, with no verified cases reported by Bruhn–Schaudt. The exact values and the upper-bound constructions are not in any source read. |
+| Attainer classes 1, 8, 51, 1, 7 (k = 3..7) | **Not found.** No source lists or counts families attaining a minimum margin, or a minimum top frequency at fixed universe size, for any class of union-closed families. |
+| M_k, H_t attain μ = ⌈k/2⌉ (block-family upper bound) | **Not found as such.** The ingredient of M_k (doubling points and separating the clones with co-singletons) is a known proof device (Hu, sketched in Bruhn–Schaudt). |
+| Proposition L (μ ≥ λ, so the table is a representation invariant, not a lattice invariant) | **Elementary consequence** of the standard lattice correspondence and Lemma 1 of Chen–van der Holst–Kostochka–Li. Likely folklore; not stated in this form in any source read. |
+
+So this is not PARTLY KNOWN in the sense of any row already being published. The honest qualifier for a write-up is: "the lower bound μ ≥ 1 on this class is the case of Poonen's (open) strict conjecture, and our table verifies it for k ≤ 7 on valid families."
+
+Why about 75% and not higher:
+
+- Poonen (1992) itself could not be read. It verifies Frankl for universes ≤ 7 and could contain small-universe strict-majority checks that the secondary sources do not mention. This is the largest single risk, about 10 points.
+- The OEIS search page could not be queried automatically (A.4), about 5 points.
+- The citing-paper sweep used reference lists and keyword search, not a citation database. Theses and non-English work (for example the Chinese-language S-Frankl case analyses) may be missed, about 5 points.
+- Abe (2002) and Hu's thesis were read only in abstract or second-hand form, about 5 points.
+
+What would change this verdict:
+
+- **To KNOWN or PARTLY KNOWN:** Poonen (1992), or any later paper, tabulating the minimum top frequency (or the strict-majority excess) over separating families without singletons by universe size; an OEIS entry matching 1, 8, 51, 1, 7 or 2, 29, 2741; Hu's thesis or Abe (2002) computing min excess for families or lattices with k (meet-)irreducibles and the representation constraint.
+- **To higher confidence in NEW:** reading Poonen (1992) in full (library copy or the author), and running the two OEIS searches in A.4 by hand.
+
+### C.2 Papers a write-up must cite
+
+1. **Bruhn and Schaudt (2015)**, *The journey of the union-closed sets conjecture*, Graphs Combin. 31, 2043–2074 — [arXiv:1309.3297](https://arxiv.org/abs/1309.3297). Survey; source for the standard reductions, the lattice form, and Poonen's Conjectures 14 and 15.
+2. **Poonen (1992)**, *Union-closed families*, J. Combin. Theory Ser. A 59, 253–268 — [doi:10.1016/0097-3165(92)90068-6](https://doi.org/10.1016/0097-3165(92)90068-6). Origin of the strict conjecture that min μ(k) ≥ 1 instantiates, of "blocks", and of the ⊎ notation.
+3. **Pulaj, Raymond and Theis (2016)**, *New conjectures for union-closed families*, Electron. J. Combin. 23(3) P3.23 — [EJC](https://www.combinatorics.org/ojs/index.php/eljc/article/view/v23i3p23). The closest computation (min top frequency by family size and universe, integer programming), to be distinguished explicitly.
+4. **Vučković and Živković (2017)**, *The 12-element case of Frankl's conjecture*, IPSI BgD Trans. Internet Research 13(1), 65–71 — [record](https://enauka.gov.rs/handle/123456789/228010); with **Bošnjak and Marković (2008)**, Electron. J. Combin. 15, R88 — [EJC](https://www.combinatorics.org/ojs/index.php/eljc/article/view/v15i1r88). The small-universe verifications that the table refines from μ ≥ 0 to exact minima.
+5. **Falgas-Ravry (2011)**, *Minimal weight in union-closed families*, Electron. J. Combin. 18, P95 — [arXiv:1101.2589](https://arxiv.org/abs/1101.2589). Separating families, the plateau family, and the bound behind "Frankl holds for separating families with ≤ 2k members".
+
+Recommended in addition: Chen, van der Holst, Kostochka and Li (2019) for Proposition L; Renaud (1991) for the family-size analogue φ(n); Kabela, Polák and Teska ([arXiv:2212.09279](https://arxiv.org/abs/2212.09279)) for strict abundance in families without small sets.
