@@ -1,0 +1,54 @@
+minimiser classes: k=3: 1, k=4: 8, k=5: 51, k=6: 1, k=7: 7
+== 1. Types of the minimiser classes ==
+k=4: 8 minimiser classes; named 2, unnamed 6
+     n=  6 deg=[1, 4, 4, 4] type=lift of a k-1 minimiser
+     n=  6 deg=[2, 4, 4, 4] type=-
+     n=  6 deg=[3, 3, 4, 4] type=B(2,2)
+     n=  6 deg=[3, 4, 4, 4] type=-
+     n=  6 deg=[4, 4, 4, 4] type=-
+     n=  8 deg=[5, 5, 5, 5] type=-
+     n= 10 deg=[6, 6, 6, 6] type=-
+     n= 12 deg=[7, 7, 7, 7] type=-
+k=5: 51 minimiser classes; named 13, unnamed 38
+     -: 38, B(2,3): 1, H_2: 1, I(2,0)=lift(M_4): 1, I(2,1): 1, I(2,2): 1, II(2): 1, lift of a k-1 minimiser: 7
+k=6: 1 minimiser classes; named 1, unnamed 0
+     n= 11 deg=[6, 6, 6, 7, 7, 7] type=B(2,2,2)
+k=7: 7 minimiser classes; named 7, unnamed 0
+     n= 12 deg=[1, 7, 7, 7, 8, 8, 8] type=I(3,0)=lift(M_6)
+     n= 12 deg=[2, 7, 7, 7, 8, 8, 8] type=I(3,1)
+     n= 12 deg=[3, 7, 7, 7, 8, 8, 8] type=I(3,2)
+     n= 12 deg=[6, 7, 7, 7, 8, 8, 8] type=II(3)
+     n= 12 deg=[4, 7, 7, 7, 8, 8, 8] type=I(3,3)
+     n= 12 deg=[7, 7, 7, 7, 8, 8, 8] type=B(2,2,3)
+     n= 18 deg=[10, 10, 10, 10, 11, 11, 11] type=H_3
+== 2. Deletions ==
+one-element deletion G-x = {A minus x}; 'valid' means frankl_core.is_valid on k-1 elements
+k=4: classes 8 | some valid deletion 4 | deletion is a k-1 minimiser 4 | valid deletion with mu <= mu(G) 4 | with mu <= mu(G)-1 4
+k=5: classes 51 | some valid deletion 42 | deletion is a k-1 minimiser 39 | valid deletion with mu <= mu(G) 42 | with mu <= mu(G)-1 39 | one- or two-element deletion is a minimiser 42
+k=6: classes 1 | some valid deletion 0 | deletion is a k-1 minimiser 0 | valid deletion with mu <= mu(G) 0 | with mu <= mu(G)-1 0 | one- or two-element deletion is a minimiser 1
+k=7: classes 7 | some valid deletion 7 | deletion is a k-1 minimiser 7 | valid deletion with mu <= mu(G) 7 | with mu <= mu(G)-1 7 | one- or two-element deletion is a minimiser 7
+== 3. Proposition F2 ==
+   t=2 I(2,0)                 n=  7 valid=True mu=3 g=[-5, 1, 1, 3, 3]
+   t=2 I(2,1)                 n=  7 valid=True mu=3 g=[-3, 1, 1, 3, 3]
+   t=2 I(2,2)                 n=  7 valid=True mu=3 g=[-1, 1, 1, 3, 3]
+   t=2 II(2)                  n=  7 valid=True mu=3 g=[-1, 1, 1, 3, 3]
+   t=2 II(2,0)=B(2,..,2,3)    n=  7 valid=True mu=3 g=[1, 1, 1, 3, 3]
+   t=2 H_2                    n=  9 valid=True mu=3 g=[1, 1, 1, 3, 3]
+t=2 (k=5): 6 families, all valid with mu = t+1 = 3: True; isomorphism classes 6; II(t,0) is B(2,..,2,3): True
+   t=3 I(3,0)                 n= 12 valid=True mu=4 g=[-10, 2, 2, 2, 4, 4, 4]
+   t=3 I(3,1)                 n= 12 valid=True mu=4 g=[-8, 2, 2, 2, 4, 4, 4]
+   t=3 I(3,2)                 n= 12 valid=True mu=4 g=[-6, 2, 2, 2, 4, 4, 4]
+   t=3 I(3,3)                 n= 12 valid=True mu=4 g=[-4, 2, 2, 2, 4, 4, 4]
+   t=3 II(3)                  n= 12 valid=True mu=4 g=[0, 2, 2, 2, 4, 4, 4]
+   t=3 II(3,0)=B(2,..,2,3)    n= 12 valid=True mu=4 g=[2, 2, 2, 2, 4, 4, 4]
+   t=3 H_3                    n= 18 valid=True mu=4 g=[2, 2, 2, 2, 4, 4, 4]
+t=3 (k=7): 7 families, all valid with mu = t+1 = 4: True; isomorphism classes 7; II(t,0) is B(2,..,2,3): True
+t=4 (k=9): 8 families, all valid with mu = t+1 = 5: True; isomorphism classes 8; II(t,0) is B(2,..,2,3): True
+t=5 (k=11): 9 families, all valid with mu = t+1 = 6: True
+t=6 (k=13): 10 families, all valid with mu = t+1 = 7: True
+== 4. Does a valid one-element deletion lower mu? ==
+k=4: all valid G and all x with G-x valid: distribution of mu(G) - mu(G-x) = [(1, 116), (2, 104), (3, 36)]
+k=5: all valid G and all x with G-x valid: distribution of mu(G) - mu(G-x) = [(0, 4570), (1, 41955), (2, 78725), (3, 89280), (4, 64935), (5, 27870), (6, 6545), (7, 755), (8, 5)]
+k=6 example: G = [0, 6, 14, 24, 30, 38, 46, 49, 55, 57, 59, 61, 62, 63], mu(G) = 4; G-5 = [0, 6, 14, 17, 23, 24, 25, 27, 29, 30, 31], mu(G-5) = 5
+=> 'mu(G) >= mu(G-x) + 1' fails at k = 5 (difference 0 occurs); 'mu(G) >= mu(G-x)' holds for all valid G at k = 4, 5 and fails at k = 6
+ALL STRUCTURE CHECKS PASS

@@ -1,0 +1,106 @@
+== M_4 (t = 2): 62 pairs (G_0, G_1), 58 valid extensions, formula mismatches 0 ==
+mu distribution over valid extensions: [(3, 16), (4, 23), (5, 15), (6, 4)]
+minimum mu = 3; t+1 = 3; Theorem F1 (mu >= t+1) holds: True
+classes with mu = t+1: 8
+  n=  7 s=1 deg=[1, 4, 4, 5, 5] extensions=1
+      B=['0', 'C1', 'C2', 'U0', 'U1']
+      D=['U01']
+      E=[]
+  n=  7 s=2 deg=[2, 4, 4, 5, 5] extensions=2
+      B=['0', 'C2', 'U0', 'U1']
+      D=['U01']
+      E=['C1']
+  n=  7 s=2 deg=[3, 4, 4, 5, 5] extensions=6
+      B=['0', 'C2', 'U0']
+      D=['U01']
+      E=['C1', 'U1']
+  n=  7 s=3 deg=[3, 4, 4, 5, 5] extensions=1
+      B=['0', 'U0', 'U1']
+      D=['U01']
+      E=['C1', 'C2']
+  n=  7 s=3 deg=[4, 4, 4, 5, 5] extensions=2
+      B=['0', 'U0']
+      D=['U01']
+      E=['C1', 'C2', 'U1']
+  n=  7 s=2 deg=[3, 4, 5, 5, 5] extensions=2
+      B=['0']
+      D=['C1']
+      E=['C2', 'U0', 'U01', 'U1']
+  n=  7 s=3 deg=[4, 4, 5, 5, 5] extensions=1
+      B=['0']
+      D=['U01']
+      E=['C1', 'C2', 'U0', 'U1']
+  n=  9 s=3 deg=[5, 5, 5, 6, 6] extensions=1
+      B=['0']
+      D=['U0', 'U01', 'U1']
+      E=['C1', 'C2']
+== M_6 (t = 3): 1278 pairs (G_0, G_1), 1272 valid extensions, formula mismatches 0 ==
+mu distribution over valid extensions: [(4, 21), (5, 131), (6, 330), (7, 408), (8, 276), (9, 94), (10, 12)]
+minimum mu = 4; t+1 = 4; Theorem F1 (mu >= t+1) holds: True
+classes with mu = t+1: 7
+  n= 12 s=1 deg=[1, 7, 7, 7, 8, 8, 8] extensions=1
+      B=['0', 'C1', 'C2', 'C3', 'U0', 'U01', 'U02', 'U1', 'U12', 'U2']
+      D=['U012']
+      E=[]
+  n= 12 s=2 deg=[2, 7, 7, 7, 8, 8, 8] extensions=3
+      B=['0', 'C2', 'C3', 'U0', 'U01', 'U02', 'U1', 'U12', 'U2']
+      D=['U012']
+      E=['C1']
+  n= 12 s=3 deg=[3, 7, 7, 7, 8, 8, 8] extensions=3
+      B=['0', 'C3', 'U0', 'U01', 'U02', 'U1', 'U12', 'U2']
+      D=['U012']
+      E=['C1', 'C2']
+  n= 12 s=3 deg=[6, 7, 7, 7, 8, 8, 8] extensions=9
+      B=['0', 'C3', 'U0', 'U01', 'U1']
+      D=['U012']
+      E=['C1', 'C2', 'U02', 'U12', 'U2']
+  n= 12 s=4 deg=[4, 7, 7, 7, 8, 8, 8] extensions=1
+      B=['0', 'U0', 'U01', 'U02', 'U1', 'U12', 'U2']
+      D=['U012']
+      E=['C1', 'C2', 'C3']
+  n= 12 s=4 deg=[7, 7, 7, 7, 8, 8, 8] extensions=3
+      B=['0', 'U0', 'U01', 'U1']
+      D=['U012']
+      E=['C1', 'C2', 'C3', 'U02', 'U12', 'U2']
+  n= 18 s=4 deg=[10, 10, 10, 10, 11, 11, 11] extensions=1
+      B=['0']
+      D=['U0', 'U01', 'U012', 'U02', 'U1', 'U12', 'U2']
+      E=['C1', 'C2', 'C3']
+k = 7 catalog: 7 classes (6 cores + lift(M_6)); equal to the mu = 4 extension classes of M_6: True
+== M_8 (t = 4): 123134 pairs (G_0, G_1), 123126 valid extensions, formula mismatches 0 ==
+mu distribution over valid extensions: [(5, 33), (6, 148), (7, 731), (8, 5064), (9, 17625), (10, 32798), (11, 33950), (12, 20856), (13, 8608), (14, 2574), (15, 601), (16, 118), (17, 19), (18, 1)]
+minimum mu = 5; t+1 = 5; Theorem F1 (mu >= t+1) holds: True
+classes with mu = t+1: 8
+  n= 21 s=1 deg=[1, 12, 12, 12, 12, 13, 13, 13, 13] extensions=1
+      B=['0', 'C1', 'C2', 'C3', 'C4', 'U0', 'U01', 'U012', 'U013', 'U02', 'U023', 'U03', 'U1', 'U12', 'U123', 'U13', 'U2', 'U23', 'U3']
+      D=['U0123']
+      E=[]
+  n= 21 s=2 deg=[2, 12, 12, 12, 12, 13, 13, 13, 13] extensions=4
+      B=['0', 'C2', 'C3', 'C4', 'U0', 'U01', 'U012', 'U013', 'U02', 'U023', 'U03', 'U1', 'U12', 'U123', 'U13', 'U2', 'U23', 'U3']
+      D=['U0123']
+      E=['C1']
+  n= 21 s=3 deg=[3, 12, 12, 12, 12, 13, 13, 13, 13] extensions=6
+      B=['0', 'C3', 'C4', 'U0', 'U01', 'U012', 'U013', 'U02', 'U023', 'U03', 'U1', 'U12', 'U123', 'U13', 'U2', 'U23', 'U3']
+      D=['U0123']
+      E=['C1', 'C2']
+  n= 21 s=4 deg=[4, 12, 12, 12, 12, 13, 13, 13, 13] extensions=4
+      B=['0', 'C4', 'U0', 'U01', 'U012', 'U013', 'U02', 'U023', 'U03', 'U1', 'U12', 'U123', 'U13', 'U2', 'U23', 'U3']
+      D=['U0123']
+      E=['C1', 'C2', 'C3']
+  n= 21 s=4 deg=[11, 12, 12, 12, 12, 13, 13, 13, 13] extensions=12
+      B=['0', 'C4', 'U0', 'U01', 'U012', 'U02', 'U1', 'U12', 'U2']
+      D=['U0123']
+      E=['C1', 'C2', 'C3', 'U013', 'U023', 'U03', 'U123', 'U13', 'U23', 'U3']
+  n= 21 s=5 deg=[5, 12, 12, 12, 12, 13, 13, 13, 13] extensions=1
+      B=['0', 'U0', 'U01', 'U012', 'U013', 'U02', 'U023', 'U03', 'U1', 'U12', 'U123', 'U13', 'U2', 'U23', 'U3']
+      D=['U0123']
+      E=['C1', 'C2', 'C3', 'C4']
+  n= 21 s=5 deg=[12, 12, 12, 12, 12, 13, 13, 13, 13] extensions=4
+      B=['0', 'U0', 'U01', 'U012', 'U02', 'U1', 'U12', 'U2']
+      D=['U0123']
+      E=['C1', 'C2', 'C3', 'C4', 'U013', 'U023', 'U03', 'U123', 'U13', 'U23', 'U3']
+  n= 35 s=5 deg=[19, 19, 19, 19, 19, 20, 20, 20, 20] extensions=1
+      B=['0']
+      D=['U0', 'U01', 'U012', 'U0123', 'U013', 'U02', 'U023', 'U03', 'U1', 'U12', 'U123', 'U13', 'U2', 'U23', 'U3']
+      E=['C1', 'C2', 'C3', 'C4']
+ALL EXTENSION CHECKS PASS
