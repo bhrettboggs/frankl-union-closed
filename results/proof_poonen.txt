@@ -1,0 +1,47 @@
+== k = 3: 4 valid families (2 classes) ==
+  violations of mu >= beta or mu >= j-2: 0
+  mu - beta distribution (labeled): [(0, 1), (2, 3)]
+  rung 1 decided by FC + deletion + parity: [('beta<=0, n even', 3), ('beta>=1, n odd', 1)]
+  mu - (j-2) distribution, j = join-irreducible co-singletons: [(0, 1), (2, 3)]
+  pairs (G, B), B join-irreducible, G-B valid: mu(G) - mu(G-B) distribution [(-1, 3)]
+  of these with mu(G) = mu(G-B) - 1 and G a minimiser: 3
+  example: G = [0, 3, 5, 6, 7], mu(G) = 1; B = 3; mu(G-B) = 2
+== k = 4: 304 valid families (29 classes) ==
+  violations of mu >= beta or mu >= j-2: 0
+  mu - beta distribution (labeled): [(0, 26), (2, 186), (4, 88), (6, 4)]
+  rung 1 decided by FC + deletion + parity: [('beta<=0, n even', 92), ('beta>=1, n even', 56), ('beta>=1, n odd', 156)]
+  mu - (j-2) distribution, j = join-irreducible co-singletons: [(0, 4), (1, 18), (2, 32), (3, 96), (4, 32), (5, 102), (6, 4), (7, 12), (8, 4)]
+  pairs (G, B), B join-irreducible, G-B valid: mu(G) - mu(G-B) distribution [(-1, 452), (1, 552)]
+  of these with mu(G) = mu(G-B) - 1 and G a minimiser: 148
+  example: G = [0, 3, 5, 6, 7, 15], mu(G) = 2; B = 3; mu(G-B) = 3
+== k = 5: 235749 valid families (2741 classes) ==
+  violations of mu >= beta or mu >= j-2: 0
+  mu - beta distribution (labeled): [(0, 451), (2, 12323), (4, 76785), (6, 100475), (8, 38285), (10, 6930), (12, 495), (14, 5)]
+  rung 1 decided by FC + deletion + parity: [('beta<=0, n even', 71215), ('beta>=1, n even', 46654), ('beta>=1, n odd', 117880)]
+  mu - (j-2) distribution, j = join-irreducible co-singletons: [(0, 11), (1, 190), (2, 760), (3, 3490), (4, 7865), (5, 17833), (6, 29104), (7, 43616), (8, 50605), (9, 41510), (10, 23560), (11, 11035), (12, 4255), (13, 1485), (14, 355), (15, 70), (16, 5)]
+  pairs (G, B), B join-irreducible, G-B valid: mu(G) - mu(G-B) distribution [(-1, 695175), (1, 907280)]
+  of these with mu(G) = mu(G-B) - 1 and G a minimiser: 9885
+  example: G = [0, 3, 5, 6, 7, 15, 31], mu(G) = 3; B = 3; mu(G-B) = 4
+== minimiser catalogs k = 6, 7 ==
+  k=6 M_6        n=11 mu=3 beta=1 irreducibles=6 join-irreducible co-singletons j=3 (j-2=1)
+  k=7 class 0    n=12 mu=4 beta=0 irreducibles=6 join-irreducible co-singletons j=1 (j-2=-1)
+  k=7 class 1    n=12 mu=4 beta=2 irreducibles=6 join-irreducible co-singletons j=2 (j-2=0)
+  k=7 class 2    n=12 mu=4 beta=2 irreducibles=7 join-irreducible co-singletons j=3 (j-2=1)
+  k=7 class 3    n=12 mu=4 beta=2 irreducibles=6 join-irreducible co-singletons j=3 (j-2=1)
+  k=7 class 4    n=12 mu=4 beta=2 irreducibles=7 join-irreducible co-singletons j=4 (j-2=2)
+  k=7 class 5    n=18 mu=4 beta=2 irreducibles=9 join-irreducible co-singletons j=3 (j-2=1)
+  k=7 lift(M_6)  n=12 mu=4 beta=2 irreducibles=7 join-irreducible co-singletons j=0 (j-2=-2)
+== 5. Proposition D4: 3 mu >= 4k - 4 - n ==
+  k=3: 4 valid families; violations of the bound 0, of the staircase step 0; families where ceil((4k-4-n)/3) = mu: 4 (minimisers among them: 1)
+  k=4: 304 valid families; violations of the bound 0, of the staircase step 0; families where ceil((4k-4-n)/3) = mu: 84 (minimisers among them: 44)
+  k=5: 235749 valid families; violations of the bound 0, of the staircase step 0; families where ceil((4k-4-n)/3) = mu: 2591 (minimisers among them: 1906)
+  k=6 M_6        n=11 mu=3 ceil((4k-4-n)/3)=3 bound holds True staircase step holds True
+  k=8 M_8        n=20 mu=4 ceil((4k-4-n)/3)=3 bound holds True staircase step holds True
+  k=7 class 0    n=12 mu=4 ceil((4k-4-n)/3)=4 bound holds True staircase step holds True
+  k=7 class 1    n=12 mu=4 ceil((4k-4-n)/3)=4 bound holds True staircase step holds True
+  k=7 class 2    n=12 mu=4 ceil((4k-4-n)/3)=4 bound holds True staircase step holds True
+  k=7 class 3    n=12 mu=4 ceil((4k-4-n)/3)=4 bound holds True staircase step holds True
+  k=7 class 4    n=12 mu=4 ceil((4k-4-n)/3)=4 bound holds True staircase step holds True
+  k=7 class 5    n=18 mu=4 ceil((4k-4-n)/3)=2 bound holds True staircase step holds True
+  k=7 lift(M_6)  n=12 mu=4 ceil((4k-4-n)/3)=4 bound holds True staircase step holds True
+ALL POONEN CHECKS PASS

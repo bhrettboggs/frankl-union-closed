@@ -23,6 +23,8 @@ Nothing here proves or verifies Frankl's conjecture.
 | 5 | B | Referee the complete proofs of Propositions B1 and B2 (no reasoning supplied) and find the flaw; brute force allowed. | Sonnet | The rule asks for a different model from the one that wrote the proof; the task is a bounded check of two short proofs. | **Yes.** No flaw found in either. The referee asked for the k = 0 convention to be stated explicitly, which is now done in B1(i). Its own script (all separating union-closed families on at most 4 points) agrees with `proof/scope_check.py`. Its remarks on the literature were from memory and are not used. |
 | 6 | C | Referee the complete proofs of C1, C2 (with the k = 5 and k = 6 computations), C5 and C4, and recompute every number by its own brute force. | Sonnet | Different model from the author of the proofs; bounded check with explicit numbers. | **Yes.** No flaw found. Its independent scripts reproduced max(\|F\| − q₃) = 3 on 5 vertices, max(\|F\| − q₄) = 5 on 6 vertices, the 118,314 sector families at k = 5 with min Σg = 12, the G_W values for k = 5..9 and U(10) = 32, U(11) = −201. It checked C4 by hand only. It noted that N(G) can be negative, which the text now says. |
 | 7 | F | Referee the complete proofs of Lemma E, Theorem F1 and Proposition F2; test each numbered step of F1 by brute force on all pairs (G₀, G₁) for M₄ and M₆. | Sonnet | Different model from the author; the proof has many cases and explicit counts, which a bounded brute-force check can test step by step. | **Yes.** No flaw found. Its own enumeration gave 62 and 1,278 pairs and 58 and 1,272 valid extensions for t = 2, 3, the same as `proof/extensions.py`. It confirmed that the only pairs satisfying the proof's hypotheses (α) and (β) are the non-separating ones the proof identifies (4 and 6 pairs). It did not run t = 4; `proof/extensions.py` does. It asked for the validity argument in F2 to be written out, which is done. |
+| 8 | D | Referee the complete proofs of D1, D2 and D3, and test them by brute force. | Sonnet | Different model from the author; short proofs with parity bookkeeping, which is where slips happen. | **Yes.** No flaw found. Its script tested D2 for every J and D3(a), (b) on all 4, 304 and 235,749 valid families at k = 3, 4, 5. It pointed out that D3(c) is vacuous on these sizes (no family has μ ≤ 0), so (c) rests on the proof alone; and that D1's last sentence needs the base case k = 3, now stated. It completed the "Z join-irreducible ⇒ degree-1" step from Lemma C, as now written. |
+| 9 | D | Referee the complete proofs of Lemma S and Proposition D4; test every numbered claim by brute force. | Sonnet | Same reason; the proof is an adaptation of a published argument, so a step-by-step check against data is the main safeguard. | **Yes.** No flaw found. Its script tested (S1)–(S4), both cases of D4 and the corollary on all valid families at k = 3, 4, 5 and every tie-breaking order, with 0 violations. (S5) was exhaustive only for subfamilies of at most 10 members and sampled otherwise. `proof/poonen.py` part 5 repeats the check of D4 and of the step c(a) ≥ φ + k − 1. |
 
 No proof step, novelty verdict or choice of claim was delegated.
 
@@ -42,6 +44,8 @@ I did not find it).
 | N6 | C6: every valid family containing all co-singletons has μ ≥ k − 2. | Same searches as N5; `docs/LITERATURE.md` A.2 sources. | **NOT FOUND.** By C4 it is at least as strong as Frankl's conjecture, so it is recorded as a question, not attempted. |
 | N7 | F1, F2: every valid one-element extension of M₂ₜ has μ ≥ t + 1; the families I(t,j), II(t). | Web search "union-closed family one-element extension adding a new element up-set frequency margin separating co-singletons doubled power set extremal"; `docs/LITERATURE.md` B.6 (M_k, B(…), H_t not found under any name); Bruhn–Schaudt §6.4 (Lo Faro's restricted up-compression, the nearest published "add an element to some members" operation). | **NOT FOUND.** Unsurprising: M_k itself was not found in the literature. The decomposition of Lemma E (members with and without x) is the standard A_x / A_x̄ splitting. |
 | N8 | Deletion statements W1–W3 about μ(G) versus μ(G − x). | Bruhn–Schaudt §4 (induction paragraph), Tian Prop. 6.2 and Problem 6.4 (projection along a critical coordinate in a minimal counterexample), re-read. | **PARTLY KNOWN in spirit.** That deleting an element does not behave monotonically is the standard reason induction fails; Tian's projection formula is Lemma E read backwards. The specific statements and counterexamples were NOT FOUND. |
+| N9 | D2, D3: deleting join-irreducible members plus parity; consequences of Frankl's conjecture for a valid family with μ = 0. | Norton–Sarvate via Bruhn–Schaudt §7; Tian Lemma 2.2 and Prop. 7.2 (critical join-cover number ≥ 3); Bouchard Thm 1.4, Lemma 2.5, Thm 2.6; all re-read. | **KNOWN device**, used in every minimal-counterexample paper. Those papers apply it to a smallest counterexample to Frankl's conjecture. Its use for families at margin 0 under the hypothesis that Frankl's conjecture holds was NOT FOUND, and is a routine transfer. |
+| N10 | D4: 3μ ≥ 4k − 4 − n for valid families, given Frankl's conjecture on k − 1 points. | Bruhn–Schaudt Lemma 18 and Thms 22–24 (Lo Faro; Roberts–Simpson; Falgas-Ravry; Hu); Tian Lemma 2.4 and Prop. 2.5 (the staircase argument, with proof), re-read. Hu, Discrete Math. 346 (2023) 113430 was **not opened**. | **PARTLY KNOWN.** The argument is Hu's staircase as reproduced by Tian; at μ = −1 the inequality is exactly the Lo Faro bound n ≥ 4k − 1. The statement for general μ, and its tightness on the small minimisers, were NOT FOUND. Hu's paper may contain it; I rate that about 35% likely. |
 
 Standing notes from the survey that every later check must take into
 account:
@@ -703,6 +707,201 @@ been true, could not have been proved here.
 | (i) every minimiser is hub, block or matching type | [FALSIFIED] k = 4, 5, 7 |
 | (ii) and W1, W3 | [FALSIFIED] k = 5 |
 | W2 | [OBSERVED] k = 4, 5; [FALSIFIED] k = 6 |
+
+### Section D. The valid-class case of Poonen's strict conjecture (rung 1)
+
+**Short answer.** Not proved, as expected: by B2, rung 1 *is* Poonen's
+conjecture. The deliverables are (1) the exact place where each induction
+breaks, with a family that breaks it; (2) what Frankl's conjecture (FC)
+does give, which decides rung 1 for about 70% of the valid families at
+k = 5 and leaves a sharply described residual class; (3) one unconditional
+bound, 3μ ≥ 4k − 4 − n for k ≤ 13, which proves rung 1 for all valid
+families with n ≤ 4k − 5 on at most 13 points and is tight on the
+minimisers at k = 3, 4, 5, 6, 7.
+
+FC(m) means Frankl's conjecture for union-closed families whose universe
+has at most m elements. FC(12) is a theorem (Živković–Vučković). Irr(G) is
+the set of join-irreducible members of G, and
+g_J(e) = #{A ∈ J : e ∈ A} − #{A ∈ J : e ∉ A}. Recall g_G(e) ≡ n (mod 2).
+
+Certificate: `results/proof_poonen.txt`, the output of `proof/poonen.py`
+(about 3 minutes).
+
+#### D.1 The lift/peel induction and where it stops [PROVED]
+
+**Proposition D1.** If every valid family on at most k − 1 points has
+μ ≥ 1, then every degree-1 valid family on k points has μ ≥ 2. Since
+min μ(3) = 1, a valid family with μ ≤ 0 on the smallest possible number of
+points is a core (s ≥ 2).
+
+*Proof.* `docs/THEORY.md` B.2–B.3: peel(G) is valid on k − 1 points and
+μ(G) = μ(peel G) + 1. ∎
+
+So the induction through `peel_compress` and `lift` closes the degree-1
+sector completely and says nothing about cores: **a core has no peel.** The
+two substitutes one might try both fail, with explicit families:
+
+- *Delete a point.* For a core G, G − x need not be valid: M₆ has no valid
+  one-point deletion (F.5). When it is valid, μ can go **up**: the
+  14-member family of W2 (F.5) has μ(G) = 4 and μ(G − 5) = 5. So
+  "μ(G) ≥ μ(G − x)" is false and cannot carry an induction.
+- *Delete a member.* If B ∈ Irr(G) then G ∖ {B} is union-closed, and
+  g_G(e) = g_{G∖B}(e) ± 1. From the hypothesis μ(G ∖ B) ≥ 1 one gets only
+  μ(G) ≥ 0, unless the element that witnesses μ(G ∖ B) ≥ 1 lies in B.
+  **This loss of exactly 1 is the step that breaks**, and it is the
+  obstruction Bruhn and Schaudt describe for Frankl's conjecture itself
+  (`PROOF_SURVEY.md` §4.2), one unit higher. It happens constantly: among
+  the pairs (G, B) with G and G ∖ B both valid, μ(G) = μ(G ∖ B) − 1 for
+  452 of 1,004 at k = 4 and 695,175 of 1,602,455 at k = 5, and 9,885 of the
+  latter have G a minimiser. Smallest example: G = {∅, 01, 02, 12, 012},
+  B = 01: μ(G) = 1 and μ(G ∖ B) = 2.
+
+#### D.2 What Frankl's conjecture gives [PROVED, conditional on FC(k); unconditional for k ≤ 12]
+
+**Lemma D2 (deletion).** Let G be valid on Z and J ⊆ Irr(G) with Z ∉ J.
+Then G ∖ J is union-closed with universe Z. If Frankl's conjecture holds
+for G ∖ J, there is e with g_G(e) ≥ g_J(e) + p_J, where p_J = 1 if n − |J|
+is odd and 0 otherwise. Hence μ(G) ≥ min_e g_J(e) + p_J.
+
+*Proof.* A union of two members outside J that lay in J would be
+join-irreducible, hence equal to one of them. FC gives e with
+g_{G∖J}(e) ≥ 0, hence ≥ p_J by parity, and g_G = g_{G∖J} + g_J. ∎
+
+**Corollary D3.** Let G be valid on k points and assume FC(k). Then:
+
+(a) if n is odd, μ(G) ≥ 1;
+
+(b) μ(G) ≥ j − 2, where j is the number of join-irreducible co-singletons,
+and μ(G) ≥ j − 1 if n − j is odd;
+
+(c) if μ(G) = 0 then n is even, G is a core, E₀ = {e : g(e) = 0} has at
+least two elements, no join-irreducible member contains E₀, and j ≤ 2.
+
+*Proof.* (a) J = ∅. (b) Each e lies in every member of J except possibly
+Z ∖ {e}, so g_J(e) ≥ j − 2. (c) n is even by (a). G is a core by D1's
+argument with FC(k−1). If B ∈ Irr(G) and B = Z, then G has at most one
+co-singleton (two would have union Z), hence exactly one by Lemma C, and G
+is degree-1; excluded. Otherwise D2 with J = {B} gives e with
+0 ≥ g_G(e) ≥ g_B(e) + 1, so e ∉ B and e ∈ E₀. For |E₀| ≥ 2 take e ∈ E₀
+and B inclusion-minimal among the members containing e; B is
+join-irreducible, so some e′ ∈ E₀ is outside B. Finally (b) gives
+0 ≥ j − 2 + [j odd], so j ≤ 2. ∎
+
+For k ≤ 12 these are unconditional. In particular: **[PROVED] every valid
+family on at most 12 points with an odd number of members, or with at
+least three join-irreducible co-singletons, has μ ≥ 1.**
+
+**How far this goes.** Define β(G) = max_J (min_e g_J(e) + p_J) over all
+J ⊆ Irr(G). FC implies μ ≥ β. Over all valid families (exact, labeled
+counts):
+
+| k | valid | β ≥ 1, n odd | β ≥ 1, n even | β ≤ 0 (all have n even) |
+|---|---|---|---|---|
+| 3 | 4 | 1 | 0 | 3 |
+| 4 | 304 | 156 | 56 | 92 |
+| 5 | 235,749 | 117,880 | 46,654 | 71,215 |
+
+μ ≥ β and μ ≥ j − 2 hold with no exception, and μ − β is always even. So
+at k = 5, **Frankl's conjecture together with deletion and parity decides
+rung 1 for 69.8% of the valid families.** The residual class is
+
+ 𝓡 = {valid G : n even, β(G) ≤ 0}.
+
+It contains minimisers: the family I(3,1) at k = 7 has β = 0 and μ = 4.
+The other six minimiser classes at k = 7 have β = 2, and M₆ has β = 1.
+
+> **The exact open step.** Rung 1 for all k is equivalent to FC together
+> with: *no family in 𝓡 has μ = 0.* Whether FC implies this is open
+> (`PROOF_SURVEY.md` §4.4: Carvalho–Machiavelo prove the implication in the
+> other direction only). I have no argument for it and no family that
+> suggests it is false.
+
+**Best argument that rung 1 is false.** A counterexample would be a core
+with n even, at least two elements at exactly half, every join-irreducible
+member missing one of them, and at most two join-irreducible co-singletons.
+Nothing in that list is contradictory on its face; it is the profile of a
+"balanced" family such as a product of power sets, and power sets are
+excluded from the valid class only by the no-singleton rule. If a
+counterexample exists I would expect it to be a large family that is
+locally Boolean. By D4 below it has n ≥ 4k − 4.
+
+#### D.3 An unconditional bound for small families [PROVED given FC(k−1); unconditional for k ≤ 13]
+
+**Lemma S (staircase; Hu, as in Tian Lemma 2.4).** Let G be valid on Z,
+elements listed as u₁, …, u_k with c(u₁) ≤ … ≤ c(u_k). For i < k let Y_i be
+the union of the members avoiding u_i, and S = {Z, Y₁, …, Y_{k−1}}. Then
+
+- (S2) u_j ∈ Y_i whenever i < j;
+- (S3) the k members of S are distinct and all contain u_k;
+- (S5) if B ⊆ G consists of members avoiding u_k and φ = max_e c_B(e) > 0,
+  some a ≠ u_k with c_B(a) = φ lies in exactly k − 1 members of S.
+
+*Proof.* (S2) Otherwise every member containing u_j contains u_i, so
+G_{u_j} ⊆ G_{u_i}, and c(u_j) ≥ c(u_i) forces equality, against separation.
+(S3) u_j ∈ Y_i ∖ Y_j for i < j < k, Z ≠ Y_i, and u_k ∈ Y_i by (S2).
+(S5) u_i lies in Z and in Y₁, …, Y_{i−1}, not in Y_i; so it lies in k − 1
+members of S unless u_i ∉ Y_j for some i < j ≤ k − 1, in which case every
+member containing u_i contains u_j and c_B(u_j) ≥ c_B(u_i). Start from any
+u_i with c_B(u_i) = φ (i ≠ k since c_B(u_k) = 0) and move to such a j while
+possible; the index increases and stays ≤ k − 1. ∎
+
+**Proposition D4.** Let G be valid on k points with n members and assume
+FC(k − 1). Then **3μ(G) ≥ 4k − 4 − n.**
+
+*Proof.* c(u_k) = (n + μ)/2. Let B be the set of members avoiding u_k; it
+is union-closed, contains ∅ and has (n − μ)/2 members. If B = {∅}, then
+μ = n − 2 and n ≥ k + 1 by (S3), which gives the claim. Otherwise FC(k−1)
+applies to B, so φ ≥ |B|/2. Take a from (S5). The k − 1 members of S
+containing a contain u_k, so they are not in B, and c(a) ≥ φ + k − 1.
+Therefore
+
+ μ ≥ 2c(a) − n ≥ |B| + 2k − 2 − n = (n − μ)/2 + 2k − 2 − n,
+
+which is 3μ ≥ 4k − 4 − n. ∎
+
+At μ = −1 this is the Lo Faro / Roberts–Simpson bound n ≥ 4k − 1 for a
+counterexample; D4 is that bound read as a function of the margin. It
+improves the μ ≥ 2k − n of `PROOF_SURVEY.md` §2.4 whenever n > k + 2.
+
+**Corollary D5 [PROVED, unconditional for k ≤ 13].** Every valid family on
+k ≤ 13 points has μ at least the smallest integer of the parity of n that
+is ≥ (4k − 4 − n)/3. In particular:
+
+- **rung 1 holds for every valid family with n ≤ 4k − 5** (and for
+  n = 4k − 3, by parity);
+- μ ≥ ⌈k/2⌉ for every valid family with n ≤ 4k − 3⌈k/2⌉ − 2, and for one
+  more value of n by parity (n ≤ 20 except n = 19 at k = 8).
+
+Checks. [PROVED-EXH against data] 3μ ≥ 4k − 4 − n and the step
+c(a) ≥ φ + k − 1 hold on all 4, 304 and 235,749 valid families at
+k = 3, 4, 5. The bound is **attained**: ⌈(4k − 4 − n)/3⌉ = μ for 1 of 1,
+44 of 48 and 1,906 of 2,484 labeled minimisers at k = 3, 4, 5, for M₆
+(n = 11, bound 3), and for six of the seven minimiser classes at k = 7
+(n = 12, bound 4; the exception is H₃ with n = 18). It is not attained by
+M₈ (n = 20: the bound gives 3, and 4 after the parity correction).
+
+**What D5 says about the table.** It is a second, independent proof that
+no valid family with at most 13 members has μ ≤ 2 at k = 6, and none with
+at most 14 members has μ ≤ 3 at k = 7. The exhaustive searches are still
+needed for larger families. At k = 8 it gives something the repository did
+not have: **any valid family on [8] with μ ≤ 3 has n = 19 or n ≥ 21**, and
+any with μ ≤ 0 has n ≥ 28.
+
+#### D.4 Summary of Section D
+
+| Claim | Tag |
+|---|---|
+| D1: a smallest valid family with μ ≤ 0 is a core | [PROVED] |
+| Deletion of a point or of a member cannot carry the induction | [FALSIFIED] by the families in D.1 |
+| D2, D3: under FC(k), μ ≥ 1 if n is odd; μ ≥ j − 2; profile of a μ = 0 family | [PROVED] conditional; unconditional for k ≤ 12; known device |
+| FC + deletion + parity decide rung 1 for 69.8% of valid families at k = 5 | [OBSERVED], exact count, k = 5 only |
+| D4: 3μ ≥ 4k − 4 − n under FC(k−1) | [PROVED] conditional; partly known |
+| D5: rung 1 for n ≤ 4k − 5, k ≤ 13 | [PROVED], unconditional |
+| Rung 1 for all valid families | **Open.** Equivalent to Poonen's conjecture (B2). |
+
+Confidence that rung 1 is true: about 85%, essentially my confidence in
+Poonen's conjecture; the data here (k ≤ 7, and n ≤ 4k − 5 for k ≤ 13) do
+not reach the families where it could fail.
 
 ## 4. Report
 
