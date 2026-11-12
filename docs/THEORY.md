@@ -434,3 +434,198 @@ It follows that:
    attainers are cores, which agrees with the `mu_search2` count of 120.
 
 Section B uses no [UNPROVED-IN-REPO] step.
+
+---
+
+## C. Lemma D and Lemma D′
+
+### C.1 Setting and notation
+
+Throughout this section k = 7 and S = [7]: the family contains all seven
+co-singletons. This is the densest core sector, s = 7. Here S ⊆ m never
+holds for a proper m, so every set of size 2..5 is a candidate (C_S in A.8).
+That is why `lemma_d.c` builds its candidate list with no S filter
+(line 27).
+
+Write G as a disjoint union
+
+  G = {∅, Z} ∪ {7 co-singletons} ∪ T ∪ A_4 ∪ A_3 ∪ A_2,
+
+where A_j is the set of members of size j, and T = A_5 is the top layer
+(A.8). Put t = |T| and a_j = |A_j|. Single elements are excluded by
+validity.
+
+### C.2 The sum identity
+
+**Lemma C.2 [PROVED].** Σ_{e∈[7]} g(e) = 35 + 3t − 3a_2 − a_3 + a_4.
+
+*Proof.* Each member A contributes +1 to g(e) for every e ∈ A and −1 for
+every e ∉ A, so it adds 2|A| − 7 to the sum. Adding these up by size:
+
+- ∅ gives −7 and Z gives +7.
+- The seven co-singletons give 7 · 5 = 35.
+- Each 5-set gives 3, each 4-set +1, each 3-set −1, and each 2-set −3. ∎
+
+Because every g(e) ≤ μ(G), the identity gives
+
+  (∗)  μ(G) ≤ c  ⇒  Σ_e g(e) ≤ 7c  ⇒  3a_2 + a_3 − a_4 ≥ 35 + 3t − 7c.
+
+Only this sum is used below. That is weaker than requiring g(e) ≤ c for
+every single e.
+
+### C.3 Step (ii): 3a_2 − a_4 ≤ 30
+
+**Lemma C.3.** For every valid G on [7] with S(G) = [7], 3a_2 − a_4 ≤ 30.
+
+*Proof.* Let F be the graph on [7] whose edges are the 2-sets of G, so
+|F| = a_2.
+
+If two edges of F are disjoint, their union is a 4-set, and union-closure
+puts it in G. So
+
+  a_4 ≥ f(F) := #{4-sets Q ⊆ [7] : F contains a perfect matching of Q}.
+
+A 4-set Q has three perfect matchings M_1, M_2, M_3, each made of two
+edges. Let F̄ be the complement graph, with 21 − a_2 edges. Then F contains
+M_i exactly when F̄ contains no edge of M_i. So Q is counted in f(F)
+exactly when F̄ fails to meet all three M_i. Hence
+
+  f(F) = 35 − u(F̄),
+  u(H) := #{4-sets Q : H meets all three perfect matchings of Q}.
+
+This u(H) is the quantity in `lemma_d_check.c`, whose header notes it is
+equivalently "H[Q] contains a triangle or a claw". Therefore
+
+  3a_2 − a_4 ≤ 3a_2 − f(F) = 3(21 − |F̄|) − 35 + u(F̄)
+             = 28 + (u(F̄) − 3|F̄|).
+
+The program `lemma_d_check` enumerates all 2^21 graphs H on 7 vertices
+and reports max_H (u(H) − 3|H|) = 2, attained by 7 labeled graphs, all
+with 6 edges. So 3a_2 − a_4 ≤ 30. ∎
+
+*Status.* The reduction is a hand proof. The graph inequality is an
+exhaustive computation by `lemma_d_check.c`, which is deterministic and
+runs in 0.2 s. Its expected output is recorded in the README's
+"Build and verify" block, and the bootstrap reproduces it every session.
+**No output file for it is stored in `results/`** (listed in E.2).
+Overall tag: **[PROVED-EXH]**, with the program and the README's expected
+output standing in for a certificate file.
+
+*Independent check (this session).* A separate numpy computation of
+max_F (3|F| − f(F)) over all 2^21 graphs, computed directly from f and
+without the complement step, gives exactly 30. It is attained by 7 graphs
+with 15 edges, which are the complements of `lemma_d_check`'s 6-edge
+attainers. So both the bound and the complement translation check out.
+
+*Side note on the program's last lines.* `lemma_d_check` also prints
+"t covered iff 3t − 50 ≥ 2", which is true for t ≥ 18. This is the cap-3
+version of the lemma with the trivial bound a_3 ≤ 35 in place of step
+(iii): (∗) at c = 3 gives 3a_2 − a_4 ≥ 3t − 21, while step (ii) gives
+3a_2 − a_4 ≤ 28 + 2. So t ≥ 18 is impossible without needing α at all.
+
+### C.4 Step (iii): a_3 ≤ α(T)
+
+Let Γ_T be the graph on the 35 triples of [7] in which τ_1 ~ τ_2 iff
+|τ_1 ∩ τ_2| = 1 and τ_1 ∪ τ_2 ∉ T. Let α(T) be its independence number.
+`lemma_d.c` (lines 29–35) and `lemma_d2.c` compute exactly this graph and
+its α by branch and bound.
+
+**Lemma C.4 [PROVED].** For every valid G on [7] with S(G) = [7] and top
+layer T, the triples of G form an independent set in Γ_T, so a_3 ≤ α(T).
+
+*Proof.* Take two triples τ_1, τ_2 ∈ G that are adjacent in Γ_T. Then
+|τ_1 ∪ τ_2| = 3 + 3 − 1 = 5. Union-closure puts this 5-set in G, so it lies
+in T. That contradicts adjacency. ∎
+
+(Triples meeting in 2 elements have a 4-set as their union. That only
+constrains A_4, and the proof ignores it, because we only need an upper
+bound on a_3. Disjoint triples have a 6-set as their union, which is a
+co-singleton and always present here.)
+
+### C.5 Lemma D
+
+**Lemma D [PROVED-EXH, using C.3].** Let G be valid on [7] with S(G) = [7]
+and top layer T, t = |T|. If μ(G) ≤ 3, then α(T) ≥ 3t − 16.
+Equivalently: if α(T) ≤ 3t − 17, then no valid family on [7] with
+co-singleton set [7], top layer T, and μ ≤ 3 exists. In that case T is
+called **covered**.
+
+*Proof.* (∗) with c = 3 gives 3a_2 + a_3 − a_4 ≥ 14 + 3t. By C.3 and C.4,
+the left side is at most 30 + α(T). ∎
+
+Both t and α(T) are invariant under Sym(7) = Stab([7]). So if a
+representative printed by `./orbits 7 127` is covered, its whole orbit is
+covered (A.11). This is how `orbit_driver5.py` uses the coverage file:
+covered reps are logged as `L idx T osz` and never searched.
+
+### C.6 Lemma D′ (general cap)
+
+**Corollary D′ [PROVED-EXH, using C.3].** In the setting of Lemma D, with
+an integer cap c: if μ(G) ≤ c, then α(T) ≥ 3t + 5 − 7c. So T is covered
+at cap c when α(T) ≤ 3t + 4 − 7c.
+
+*Proof.* (∗) gives 3a_2 + a_3 − a_4 ≥ 35 + 3t − 7c. Steps (ii) and (iii)
+do not involve the cap, so 30 + α(T) ≥ 35 + 3t − 7c. ∎
+
+The thresholds are:
+
+| c | covered iff α(T) ≤ |
+|---|---|
+| 3 | 3t − 17 (Lemma D) |
+| 4 | 3t − 24 |
+| 5 | 3t − 31 |
+
+`lemma_d2 c` implements exactly this test (line 106). The header comment
+of `lemma_d2.c` still contains the cap-3 sentence "need alpha(T) >= 3t-16",
+copied from `lemma_d.c`. It is stale but harmless: the code uses the
+general threshold.
+
+### C.7 Numerical checks against `results/` (this session)
+
+The ledger tags Lemma D′ [PROVED]. Before keeping any tag here, I checked:
+
+1. **The coverage file is reproducible.** `./orbits 7 127 | … | ./lemma_d2 4`
+   reproduces `results/lemma_d2_k7_s7_cap4.txt` byte for byte: 201 of
+   1,044 reps covered. `./lemma_d` and `./lemma_d2 3` agree byte for byte,
+   covering 578 of 1,044, as the ledger says.
+
+2. **α and t, recomputed independently.** A Python script with its own
+   graph construction and its own MIS search recomputes t and α(T) for
+   all 1,044 reps. It agrees with every t, α and covered flag in the
+   certificate (0 mismatches), and gives 578 covered at cap 3 and 201 at
+   cap 4.
+
+3. **Exactly the right reps were skipped.** The `L` lines in
+   `results/orb3_k7_s7_c4.log` are exactly the 201 covered reps, with the
+   same T and orbit sizes. Every one of the 843 `R` lines matches a fresh
+   rep list.
+
+4. **The ingredients hold on random families.** On 20,000 random valid
+   families on [7] with S = [7] (union-closures of random generator sets),
+   the identity C.2 and the bounds C.3 and C.4 all hold, with no
+   violations.
+
+5. **Soundness against the search (strongest test).**
+   - At cap 5, Lemma D′ covers 17 reps. `mu_search2` at cap 5 on those
+     reps: 7 ran to completion and found 0 families. The other 10 hit a
+     3×10^7-node limit having printed 0 FAM lines. They are not closed,
+     and I make no claim about them.
+   - Positive control: the uncovered reps 0, 1, 2 at cap 5 do yield
+     families (393 in total, all μ = 5). On every one of them, the
+     identity, (ii), (iii) and the D′ inequality hold. The minimum slack
+     α(T) − (3t + 5 − 7μ) is 34, so the bound is far from tight on these
+     sparse top layers.
+   - At cap 3, my re-closure of s = 7 without Lemma D (D.2) closed 573
+     of the 578 Lemma-D-covered reps by search, all with 0 found. The 5
+     reps it did not finish are covered.
+
+On this evidence, Lemma D and D′ keep the tag **[PROVED-EXH]** (hand
+proof, plus the exhaustive graph check C.3). I use that tag rather than
+the ledger's [PROVED] only because step (ii) is a computer check. No step
+is [UNPROVED-IN-REPO].
+
+*Gap in the record (not in the proof).* The 2026-11-09 ledger says 181 of
+the 201 cap-4-covered reps were also searched to completion (454,490,937
+nodes, 0 found). That run is not in `results/`, so it cannot be audited
+here. It is a consistency check, not something the k = 7 result depends
+on.
