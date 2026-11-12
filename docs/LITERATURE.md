@@ -73,7 +73,76 @@ No source read computes min μ(k), or the minimum top frequency, for valid (sing
 
 ## Section B. Equivalent formulations
 
-*(pending)*
+The same quantity could be hiding under another name. Each candidate formulation below was checked against the sources in A.2 and the additional sources named here.
+
+### B.1 Lattice formulation (meet-irreducibles)
+
+A valid family G, ordered by inclusion, is a lattice L(G) with join = union, bottom ∅ and top [k]. The usual lattice form of Frankl's conjecture (Bruhn–Schaudt, Conjecture 1; Abe–Nakano, Reinhold, Czédli) asks for a join-irreducible a with |↑a| ≤ |L|/2; dually, a meet-irreducible m with |↓m| ≤ |L|/2. The matching margin of a lattice is
+
+  λ(L) = |L| − 2 · min_{m ∈ M(L)} |↓m|,
+
+where M(L) is the set of meet-irreducibles (non-top members with exactly one upper cover). Frankl's conjecture is λ(L) ≥ 0 for every finite lattice.
+
+**Proposition L [PROVED].** For every valid G, μ(G) ≥ λ(L(G)), with equality when every element e has a meet-irreducible y_e (defined below).
+
+*Proof.* For e ∈ [k] let y_e be the union of all members not containing e. It is a member (∅ is one of them, and G is union-closed), and a member A avoids e exactly when A ⊆ y_e. So c(e) = |G| − |↓y_e| and 2c(e) − |G| = |G| − 2|↓y_e|. If y is meet-irreducible with upper cover y⁺ and e ∈ y⁺ ∖ y, then y = y_e: any A avoiding e gives A ∪ y avoiding e, and A ∪ y ⊋ y would force A ∪ y ⊇ y⁺ ∋ e. (This is Lemma 1 of Chen–van der Holst–Kostochka–Li.) Hence every meet-irreducible is some y_e, so min_e |↓y_e| ≤ min_{m∈M(L)} |↓m|. If every y_e is meet-irreducible the two minima coincide. ∎
+
+Consequences, checked by exhaustive enumeration of valid families at k = 3, 4, 5 (`enum_uc_leaves`, `is_valid`, `canon`; script run outside the repo on 2026-11-12, no certificate in `results/`):
+
+| k | valid classes | μ < λ | μ > λ | min μ | min λ |
+|---|---|---|---|---|---|
+| 3 | 2 | 0 | 1 | 1 | 0 |
+| 4 | 29 | 0 | 7 | 2 | 0 |
+| 5 | 2,741 | 0 | 173 | 3 | 0 |
+
+[OBSERVED, k = 3..5 only] **min λ = 0 at every k**, because valid families can have a Boolean lattice. Example: {∅, {0,2}, {1,2}, [3]} has lattice 2^[2] (λ = 0) but μ = 2, since the element 2 lies in 3 of 4 members.
+
+So **min μ(k) is not the minimum of a lattice invariant.** It depends on the set representation: the requirement that the universe is exactly [k], with no singleton members, is what pushes μ up. Chen et al. make the same point from the other side: adding a new element to every member not below a fixed non-meet-irreducible member preserves the lattice (their Theorem 1), and this can only raise μ. The lattice-theoretic literature on Frankl's conjecture (modular, lower semimodular, planar semimodular and large semimodular lattices) proves λ ≥ 0 on lattice classes. None of it minimizes λ, and minimizing λ would not give this table anyway.
+
+**Abe's "excess of a lattice"** is the closest named lattice invariant. Abe (Graphs Combin. 18 (2002) 395–402, [doi:10.1007/s003730200029](https://doi.org/10.1007/s003730200029); **abstract only**, as the full text is paywalled) defines ex(L) = |L| − min{|↑x| + |↓y| : (x,y) mismatching}, where a pair is mismatching when x is join-irreducible, y is meet-irreducible and x ≰ y. The abstract states that excess 0 characterizes Boolean lattices and excess 1 characterizes the 3-element chain, the diamond and the pentagon. Since ↑x and ↓y are disjoint for a mismatching pair, ex(L) ≥ 0 always, so ex is **not** the Frankl margin. It differs from μ in 1 of 2, 15 of 29 and 1,946 of 2,741 valid classes at k = 3, 4, 5, and its minimum is 0 at each k [OBSERVED]. Example: {∅, {0,2}, {1,2}, [3]} has μ = 2 and ex = 0.
+
+### B.2 Intersection-closed dual
+
+Complementing every member gives D = {[k] ∖ A}. D is intersection-closed, contains ∅ and [k], is separating, and has no (k−1)-sets. With d(e) = |D_e| = |G| − c(e),
+
+  μ(G) = |D| − 2 · min_e d(e),
+
+which is the "rare element" form of the conjecture (Bruhn–Schaudt, Section 2). This is a relabeling, not a new formulation. No source read computes it on this class.
+
+### B.3 Other names: "Frankl deficiency", "abundance gap", excess, surplus
+
+- None of these terms appears as a defined, minimized quantity in any source read. Bruhn–Schaudt define no deficiency, excess, surplus or gap notion. "Excess" in the lattice literature means Abe's invariant (B.1).
+- Tian (2026, [arXiv:2608.25147](https://arxiv.org/abs/2608.25147)) uses a deficit δ_a = t − f(a) for families with 2t members, which is −μ/2 up to the ∅ convention. It is used inside a minimal-counterexample argument, never minimized over a class.
+- Renaud (1991) strengthens the bound to ⌊n/2⌋ + 1 and tabulates φ(n) by family size (A.2). Pulaj–Raymond–Theis tabulate g(n,m), also by family size.
+- Morris (2006) tests Poonen's condition through a sum of (2|A| − n) over members (with unit weights). This is a margin-like quantity for FC-testing, not μ.
+- Keyword searches for "Frankl deficiency", "abundance gap" and "excess over half" returned none of these as defined objects.
+
+### B.4 Normalized and normal families
+
+- *Normalized* (Bruhn–Schaudt Section 3.5; Carvalho–Machiavelo): ∅ ∈ N, separating, |U(N)| = |N| − 1. A normalized valid family would have only k + 1 members. Every attainer at k = 7 has 12 or 18 members, so none is normalized.
+- Bruhn–Schaudt Theorem 23 (from Falgas-Ravry) gives the conjecture, i.e. μ ≥ 0, for separating families with at most 2m members, and Maßberg pushes this slightly past 2m. So Frankl's conjecture, μ ≥ 0, was already known for the 12-member attainers at k = 7 and for M₆ (11 members). The values μ = 4 and μ = 3 were not.
+- *Normal* and *irreducible* families (Chen et al.) are the maximum-universe and minimum-universe representatives of a lattice. Proposition L shows that μ equals the lattice margin λ only for representatives in which every y_e is meet-irreducible. This is the precise sense in which μ is a representation invariant.
+
+### B.5 Minimal counterexample structure
+
+In this convention a counterexample means μ ≤ −1. The known structure of a smallest counterexample constrains the opposite end from this table:
+
+- n ≥ 4m − 1 (Lo Faro; Roberts–Simpson);
+- at least three elements of frequency exactly (n₀ − 1)/2, i.e. 2c − n = −1 (Norton–Sarvate, as reported by Bruhn–Schaudt);
+- no singleton or 2-set members;
+- for families of height five, each critical coordinate x has the coatom U ∖ {x} as a member (Tian 2026, Theorem 4.1).
+
+Tian's coatom condition is the only structural echo found of the co-singletons that appear in M_k, B(…) and H_t. It concerns hypothetical counterexamples, not minimizers of μ. None of these papers studies how small a positive margin can be.
+
+### B.6 Are M_k, B(…), H_t known under other names?
+
+| Repository family | Description | Closest objects in the literature | Verdict |
+|---|---|---|---|
+| M_k = B(2,…,2), k = 2t | All unions of the t disjoint pairs, plus the co-singletons [k] ∖ {2i+1}. 2^t + t members, μ = t [OBSERVED: `matching_family` gives μ = 2, 3, 4 at k = 4, 6, 8]. | The union part is the power set 2^[t] with every point doubled. Adding co-singletons to separate cloned elements is the step sketched in Hu's Theorem 24 (Bruhn–Schaudt Section 6: elements are cloned and sets of the form U′ − x are added to separate the clones). Falgas-Ravry's *plateau* U_n is all (n−1)-subsets plus [n], i.e. co-singletons alone. Imrich–Sauer–Woess study families generated by 2-sets. | **Construction technique known (cloning plus separating co-singletons); the family as a named object, and its μ, not found.** |
+| B(b₁,…,b_t) | Unions of a partition of [k] into blocks, plus co-singletons for every non-kept element of each block. | Kabela–Polák–Teska add pairwise-disjoint blocks of new elements to families (this produces inseparable elements, the opposite of B). | **Not found.** Naming clash: Poonen's "block" (cited in Cambie's survey, [arXiv:2306.12351](https://arxiv.org/abs/2306.12351)) means a maximal set of elements lying in exactly the same members, and Morris's B(n,3,r) is a family of 3-sets. A write-up should rename B(…) or define it explicitly. |
+| H_t, k = 2t+1 | M_{2t} with a hub h added to a copy of every union, plus the t co-singletons. 2^{t+1} + t − 1 members, μ = t + 1 [PROVED, ledger 2026-11-09 §4]. | The union part is Poonen's ⊎ product of the doubled power set with {∅, {h}}. Kabela–Polák–Teska's constructions and Poonen's A_k use ⊎ products, but with different factors and no co-singletons. | **Not found.** |
+
+Confidence that none of the three families appears in the literature under another name with its margin computed: about 75%. The main uncertainty is the unread full texts of Poonen (1992) and Abe (2002), and Hu's master's thesis, which Bruhn–Schaudt list as "in preparation".
 
 ---
 
