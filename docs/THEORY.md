@@ -280,3 +280,157 @@ So the valid families on [k] are the disjoint union of:
 
 That is why a table "s = 2..k closed at cap c, plus degree-1 sector μ > c"
 establishes min μ(k) > c.
+
+---
+
+## B. Lemma C and the degree-1 reduction
+
+### B.1 Lemma C
+
+**Lemma C [PROVED].** Let k ≥ 2 and let G be a union-closed, separating
+family on [k] with Z ∈ G. Then every maximal member of G ∖ {∅, Z} has size
+k − 1. Equivalently, every member of G other than Z lies below some
+co-singleton of G.
+
+This is the statement that `lemma_c_holds(G, k)` tests (`frankl_core.py`
+line 368). It is also what `mu_search.py` uses (docstring, lines 3–8): a
+member of size 2..k−2 must miss some x ∈ S(G), so the candidate list can
+be restricted to C_S (A.8).
+
+*Proof.* Let m be a maximal member of G ∖ {∅, Z}. Suppose for contradiction
+that |Z ∖ m| ≥ 2, and pick y ≠ z, both outside m.
+
+Let A ∈ G contain y. Then A ⊄ m, so A ∪ m strictly contains m. By
+union-closure A ∪ m ∈ G. By maximality of m, A ∪ m cannot be a member of
+G ∖ {∅, Z}, so A ∪ m = Z. Since z ∉ m, this forces z ∈ A.
+
+So every member containing y also contains z. By symmetry, every member
+containing z also contains y. Then y and z have the same incidence pattern,
+which contradicts separation. Hence |Z ∖ m| ≤ 1, and |Z ∖ m| = 1 because
+m ≠ Z.
+
+For the second form: every A ∈ G ∖ {Z} lies below a maximal member of
+G ∖ {∅, Z}, provided that set is nonempty, and that maximal member is a
+co-singleton. If the set is empty, then G = {∅, Z}, which is not
+separating when k ≥ 2. ∎
+
+The proof uses neither "∅ ∈ G" nor "no singletons", so Lemma C holds for
+every valid family.
+
+*Checks.* `run_A_verify.py` checks Lemma C on all valid families at k = 3
+and k = 4. This session it also held on all 235,749 valid families at
+k = 5 (brute force with `enum_uc_leaves`, no certificate file).
+
+*Where it is used.*
+
+- Completeness of `mu_search` (A.10). A member m ⊇ S with |m| ≤ k−2 would
+  lie below no co-singleton of G, so it cannot exist.
+- The dead-candidate prune in `mu_search2/3` (A.10).
+- The sector trichotomy (A.12).
+- The assertion "compressed top missing (Lemma C violated?)" in
+  `peel_compress`.
+
+### B.2 The degree-1 sector is the set of lifts
+
+**Proposition B.2 [PROVED].** Let k ≥ 3.
+
+(a) If H is valid on [k−1], then lift(H) is valid on [k] and degree-1, and
+its degree-1 element is k−1.
+
+(b) If G is valid and degree-1 on [k], with degree-1 element e, then
+peel(G) is valid on [k−1]. Inserting e back as a new element gives
+lift(peel(G)), which is G up to the relabeling that moves e to position k−1.
+
+(c) Consequently, G ↦ (e, peel(G)) is a bijection between labeled degree-1
+valid families on [k] and pairs (e ∈ [k], H valid on [k−1]). So the
+degree-1 sector at level k consists, up to isomorphism, of exactly the
+lifts of the valid families at level k−1. There are k · #valid(k−1) labeled
+degree-1 families.
+
+*Proof.*
+
+(a) Write Z_k = [k]. Then lift(H) contains ∅ and Z_k. It is union-closed:
+unions inside H stay in H, and anything ∪ Z_k = Z_k. It has no singletons,
+because the only new member Z_k has size k ≥ 2. For separation, the new
+element k−1 has pattern {Z_k}. Every old element also lies in [k−1] ∈ H,
+whose pattern differs from that. Two old elements are separated by a
+member of H. Finally c(k−1) = 1.
+
+(b) Since c(e) = 1, e lies only in Z. By A.12, S(G) = {e}, so Z∖{e} ∈ G.
+Let G′ = G ∖ {Z}. Every member of G′ avoids e, so G′ is a family on
+Z′ = Z∖{e}, and peel(G) is G′ relabeled.
+
+- G′ contains ∅ and Z′.
+- Union-closure: for A, B ∈ G′, A ∪ B ∈ G and A ∪ B ⊆ Z′ ≠ Z, so
+  A ∪ B ∈ G′.
+- No singletons: inherited from G.
+- Separation: for y ≠ z in Z′, some member of G contains exactly one of
+  them. That member is not Z, which contains both, so it lies in G′.
+
+Re-adding Z and the element e gives back G.
+
+(c) By (a) and (b), the two maps are inverse to each other. A separating
+family has at most one degree-1 element (A.5), so e is determined by G. ∎
+
+*Checks.* `run_A_verify.py` checks "peel image = all 4 valid k=3" at k = 4.
+This session, exhaustively at k = 4 and 5: there are 16 = 4·4 and
+1,520 = 5·304 degree-1 families, every peel lands in valid(k−1), and the
+peel image is all of valid(k−1).
+
+### B.3 Lifting raises μ by exactly 1
+
+**Proposition B.3 [PROVED].** If H is valid on [k−1] with n = |H|, then
+μ(lift(H)) = μ(H) + 1.
+
+*Proof.* lift(H) has n + 1 members.
+
+- Every old element e gains one member, Z_k, so its new value is
+  2(c(e) + 1) − (n + 1) = g_H(e) + 1.
+- The new element has c = 1, so its value is 2 − (n + 1) = 1 − n.
+
+Every old e lies in [k−1] ∈ H, so c(e) ≥ 1 and g_H(e) ≥ 2 − n. Hence
+μ(H) + 1 ≥ 3 − n > 1 − n, and the maximum is attained at an old element.
+So μ(lift(H)) = μ(H) + 1. ∎
+
+*Checks.* Exhaustively at k = 4 and 5 this session, for every valid H at
+level k−1. Calibration also checks single cases: T4 = lift U2[3] and T5
+have μ = 2 and 3.
+
+### B.4 Consequences used in the README and the ledgers
+
+**Corollary B.4 [PROVED].** For k ≥ 3,
+
+  min{μ(G) : G degree-1 valid on [k]} = min μ(k−1) + 1,
+
+and the degree-1 attainers are exactly the lifts of the min μ(k−1)
+attainers.
+
+*Proof.* Combine B.2(c) and B.3. ∎
+
+It follows that:
+
+1. **min μ(k) = min(min μ(k−1) + 1, min over the core sectors).** So
+   min μ(k) ≤ min μ(k−1) + 1 always holds, and only the core sectors
+   s = 2..k need searching at caps up to min μ(k−1).
+
+2. **"The degree-1 sector at k = 8 has μ ≥ 5."** By B.4 this equals
+   min μ(7) + 1. So it holds exactly when min μ(7) = 4, which is the k = 7
+   row of the results table ([PROVED-EXH], Section D). The tag is therefore
+   **[PROVED], conditional on the k = 7 row**, and it holds with equality.
+   The degree-1 families at k = 8 with μ = 5 are exactly the lifts of the
+   7 attainer classes at k = 7, one of which is lift(lift(M_6)).
+   So minμ(8) ≥ 4 needs only the core sectors s = 2..8 at cap 3. That is
+   what the 2026-11-09 ledger states.
+
+3. **The k = 7 degree-1 attainers.** min μ(6) = 3 is attained only by the
+   M_6 orbit (120 labeled; Section D, row k = 6). So the degree-1 sector at
+   k = 7 attains μ = 4 only at lift(M_6), with 7 · 120 = 840 labeled
+   families. This matches the 2026-11-09 classification (7 classes in
+   total, 10,500 + 840 = 11,340 labeled).
+
+4. **Small k, this session.** At k = 5, brute force finds 240 degree-1
+   attainers, which is 5 × 48 = 5 × (# μ = 2 families at k = 4). At k = 6,
+   the degree-1 sector has μ ≥ min μ(5) + 1 = 4 > 3. So all 120 k = 6
+   attainers are cores, which agrees with the `mu_search2` count of 120.
+
+Section B uses no [UNPROVED-IN-REPO] step.
