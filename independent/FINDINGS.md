@@ -40,7 +40,7 @@ families.
 | C: k = 7, cap 3 | INFEASIBLE (CP-SAT, SB on, 96.8 s, `results/k7_cap3_cpsat.*`) | VERIFIED |
 | C: k = 7, cap 4 | feasible; enumeration: 7 classes, 11,340 labeled (orbits 2520, 2520, 2520, 1260, 840, 840, 840; n = 12 in six classes, n = 18 in one). The final no-8th-class solve was INFEASIBLE in 8,328 s on 2 workers (`results/sectionC.txt`, `results/k7_cap4_classes.txt`) | MATCH |
 | D: k = 8, cap 4 | M₈ is valid with μ = 4, and the encoding accepts it (both solvers) | VERIFIED |
-| D: k = 8, cap 3 | running: CP-SAT, 4 workers, 12 h limit, started 05:56 UTC 2026-11-13 (`results/k8_cap3_cpsat.*`) | PENDING |
+| D: k = 8, cap 3 | INFEASIBLE (CP-SAT 9.15.6755, SB on, 4 workers, 14,475 s wall; `results/k8_cap3_cpsat.out`, full solver log `results/k8_cap3_cpsat.log`). With M₈ at cap 4 this gives **min μ(8) = 4**, by a route sharing no code with `mu_search*.c`. Caveats: it rests on CP-SAT's correctness and on the SB soundness proof in `encode.py`; there is no proof certificate (CP-SAT logs `LRAT_status: NA`). Re-check: `python3 decide.py 8 3 --log k8.log` (about 4 h on 4 cores), ideally also with a DRAT-producing SAT solver on `python3 encode.py 8 3 --sb` | VERIFIED (no certificate) |
 | E(1) sector minimum k − 2, k = 3..7 | UNSAT at cap k−3 and SAT at cap k−2 for every k (k = 7: UNSAT in 36 s) | VERIFIED |
 | E(1) k = 6 sector: none at cap 3, 452 families in 14 classes at cap 4 | UNSAT; 452 labeled, 14 classes, the same (n, orbit) table as `results/proof_sector_full.txt` | VERIFIED |
 | E(1), also: μ = k−2 sector counts 1, 8, 124 in 1, 4, 9 classes; sector sizes 1, 64, 118,314 (k = 3, 4, 5) | identical, row for row | VERIFIED |
@@ -100,8 +100,9 @@ The checks cover only finite computations at the sizes listed above. Not reached
   (38 of 51 classes unnamed at k = 5, 6 of 8 at k = 4, 9 of 51 with no valid
   deletion) were not recomputed. Only the W2 counterexample was.
 - **The scope check of Section B.3, and the E.2/E.3 range tables.**
-- **The k = 8 row of the main table**, apart from the k = 8 cap 3 run
-  reported above, and the D5 corollary at k = 8.
+- **The repo's own k = 8 sector searches** (the deg-1 sector and the s = 2 orbit
+  shards) were not re-run piece by piece; the cap 3 run above covers the whole
+  of k = 8 at once. The D5 corollary at k = 8 was not checked.
 
 ## Files
 

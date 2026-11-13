@@ -26,7 +26,7 @@ This repository does **not** re-verify Frankl's conjecture for small universes; 
 | 5 | 3 | exhaustive (2,244 μ=3 cores, Python ≡ C node-for-node) |
 | 6 | 3 | exhaustive; 120 attainers, all in the orbit of the matching family M₆ |
 | 7 | 4 | orbit-quotient search over all co-singleton sectors s=2..7, plus Lemma D for the 20 densest representatives; s=2..6 re-closed with `mu_search2` (2026-11-09) |
-| 8 | open (C6 predicts 4) | deg-1 sector has μ ≥ 5; core sector s=2 at cap 3 has 99/100 orbit reps closed, 0 found; s=3..8 not started |
+| 8 | 4 (independent route only, no certificate) | cap 3 INFEASIBLE by the CP-SAT model in `independent/` (4.0 h, solver log saved); M₈ attains 4. The repo's own search is incomplete: deg-1 sector has μ ≥ 5; core sector s=2 at cap 3 has 99/100 orbit reps closed, 0 found; s=3..8 not started |
 
 **Attainers (2026-11-09).** At k=7 exactly 7 isomorphism classes attain μ=4 (11,340 labeled): six cores (`results/k7_mu4_core_classes.txt`, including B(2,2,3) and the hub family H₃) plus lift(M₆). Counting attainer classes over k=3..7 gives 1, 8, 51, 1, 7. The hub families H_t (`hub_family.py`) are valid at k=2t+1 with μ = t+1, a second infinite family that matches the block-family bound.
 
@@ -105,7 +105,7 @@ python3 sectionB.py        # k <= 6: decisions and labeled counts 1, 48, 2484, 1
 python3 decide.py 7 3      # k = 7 cap 3: INFEASIBLE (~2 min on 4 cores)
 python3 sectionC.py        # k = 7 cap 4: classes and the labeled count 11,340 (~2.3 h on 2 cores)
 python3 sectionD.py        # k = 8 cap 4 feasible (M_8)
-python3 decide.py 8 3 --limit 43200 --log results/k8_cap3_cpsat.log   # k = 8 cap 3, time-boxed
+python3 decide.py 8 3 --limit 43200 --log results/k8_cap3_cpsat.log   # k = 8 cap 3: INFEASIBLE (~4 h on 4 cores)
 python3 sectionE.py        # Phase 8 cross-checks (sector, extensions of M_2t, D4/E1 at k <= 5)
 python3 compare_with_core.py   # the only script that imports frankl_core
 ```
