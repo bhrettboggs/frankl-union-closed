@@ -12,3 +12,6 @@ solve 6: OPTIMAL 1.5s
    class 6: n=12 mu=4 orbit 1260, 1 images pass symmetry breaking
 solve 7: OPTIMAL 27.3s
    class 7: n=18 mu=4 orbit 840, 1 images pass symmetry breaking
+solve 8: INFEASIBLE 8327.9s
+k=7 cap=4: 7 classes, 11340 labelled families, mu values [4]  [8368s]
+repo: 7 classes, 11340 labelled -> MATCH

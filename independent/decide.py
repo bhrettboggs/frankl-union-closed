@@ -16,7 +16,7 @@ logname = opt("--log", "")
 cos = "--cosing" in a
 E = Encoding(k, cap, sb=sbl > 0, sb_level=max(sbl, 1), cosingletons=cos)
 hdr = (f"k={k} cap={cap} cosingletons={cos} sb_level={sbl} workers={workers} "
-       f"limit={limit or 'none'}s ortools={ortools.__version__} python={platform.python_version()}")
+       f"limit={f'{limit}s' if limit else 'none'} ortools={ortools.__version__} python={platform.python_version()}")
 print(hdr, flush=True)
 lf = open(logname, "w") if logname else None
 if lf:

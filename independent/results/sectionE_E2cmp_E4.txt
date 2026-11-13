@@ -1,0 +1,13 @@
+== E.2 k=7 attainer classes vs mu=4 extensions of M_6 ==
+k=7 attainer classes (sectionC.py): 7; mu=4 extension classes of M_6: 7; equal as sets of classes: True
+  ==> E2 the 7 k=7 attainer classes = mu-4 extensions of M_6: VERIFIED  (7 vs 7)
+== E.4 other small Phase 8 statements ==
+W2: G valid=True mu=4 (claim 4); G-5 valid=True mu=5 (claim 5)
+  ==> E4 W2 counterexample at k=6: VERIFIED  (4, 5)
+D4 equality: M_6 True; k=7 classes with equality 6 of 7
+  ==> E4 D4 tight on M_6 and on 6 of the 7 k=7 classes: VERIFIED  (6/7)
+
+SECTION E SUMMARY
+  VERIFIED  E2 the 7 k=7 attainer classes = mu-4 extensions of M_6  [7 vs 7]
+  VERIFIED  E4 W2 counterexample at k=6  [4, 5]
+  VERIFIED  E4 D4 tight on M_6 and on 6 of the 7 k=7 classes  [6/7]

@@ -103,7 +103,7 @@ cd independent
 python3 selftest.py        # encoding = brute force over all families at k = 3, 4; symmetry breaking meets every orbit
 python3 sectionB.py        # k <= 6: decisions and labeled counts 1, 48, 2484, 120 (~1 min)
 python3 decide.py 7 3      # k = 7 cap 3: INFEASIBLE (~2 min on 4 cores)
-python3 sectionC.py        # k = 7 cap 4: classes and the labeled count 11,340
+python3 sectionC.py        # k = 7 cap 4: classes and the labeled count 11,340 (~2.3 h on 2 cores)
 python3 sectionD.py        # k = 8 cap 4 feasible (M_8)
 python3 decide.py 8 3 --limit 43200 --log results/k8_cap3_cpsat.log   # k = 8 cap 3, time-boxed
 python3 sectionE.py        # Phase 8 cross-checks (sector, extensions of M_2t, D4/E1 at k <= 5)

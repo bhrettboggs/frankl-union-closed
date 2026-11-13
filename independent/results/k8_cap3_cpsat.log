@@ -155,3 +155,6 @@ Starting search at 0.44s with 4 workers.
 
 #Model   3.38s var:1977/1978 constraints:9411/9546
 #Model 1249.48s var:1976/1978 constraints:9342/9546
+#Model 2267.51s var:1975/1978 constraints:9266/9546
+#Model 8006.73s var:1974/1978 constraints:9236/9546
+#Model 9296.41s var:1973/1978 constraints:9165/9546

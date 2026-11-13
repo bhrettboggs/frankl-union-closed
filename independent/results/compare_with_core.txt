@@ -1,0 +1,13 @@
+1. k=3: all 256 families, disagreements in validity/mu: 0
+1. k=4: all 65536 families, disagreements in validity/mu: 0
+1. k=5: 20000 random families (3307 valid), disagreements: 0
+1. k=6: 20000 random families (4047 valid), disagreements: 0
+2. k=7: independent 7 classes / 11340 labelled; repo 7 classes / 11340 labelled; identical classes and per-class counts: True
+3. M_4: independent n=6, frankl_core n=6, isomorphic: True
+3. M_6: independent n=11, frankl_core n=11, isomorphic: True
+3. M_8: independent n=20, frankl_core n=20, isomorphic: True
+COMPARISON: ALL AGREE
+
+real	0m3.042s
+user	0m2.993s
+sys	0m0.008s
