@@ -32,6 +32,8 @@ This repository does **not** re-verify Frankl's conjecture for small universes; 
 
 These are results of this program, not peer-reviewed claims. Session-by-session details, including falsified ideas, are in `SESSION_*.md`.
 
+**Proof attempt (2026-11-12).** [`docs/PROOF_ATTEMPT.md`](docs/PROOF_ATTEMPT.md) records an attempt to prove lower bounds on μ, with every claim tagged and every failure stated; [`docs/PROOF_SURVEY.md`](docs/PROOF_SURVEY.md) surveys the known proof techniques. Nothing there proves Frankl's conjecture. The main outcomes: every valid one-element extension of M₂ₜ has μ ≥ t+1, and the seven k=7 attainers are exactly the extremal extensions of M₆; (1+ψ)μ ≥ 2k−2−(1−ψ)n for every valid family, ψ = (3−√5)/2, so μ ≥ 1 whenever n < (1+√5)(k−1); the lower bound μ ≥ 1 on all valid families is equivalent to Poonen's strict conjecture and remains open. Scripts are in `proof/`, their outputs in `results/proof_*.txt`.
+
 ## Files
 
 | File | Purpose |

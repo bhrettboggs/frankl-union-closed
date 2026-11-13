@@ -1042,4 +1042,127 @@ contains Frankl's and Poonen's conjectures; conditional on both, about
 
 ## 4. Report
 
-*(Written in Section G.)*
+Written 2026-11-12, after Sections A–F. Nothing in this phase proves or
+verifies Frankl's conjecture. Every certificate named below was regenerated
+at the end of the session and is byte-identical to the file in `results/`.
+
+### 4.1 What was proved
+
+Tags as in the ledgers. "Novelty" is the verdict of the log in §2; NOT FOUND
+means only that I did not find it.
+
+| # | Statement | Tag | Novelty |
+|---|---|---|---|
+| B1 | Frankl's conjecture ⇔ μ ≥ 0 on valid families | [PROVED] | KNOWN |
+| B2 | Poonen's strict conjecture ⇔ μ ≥ 1 on valid families (rung 1) | [PROVED] | PARTLY KNOWN |
+| C1 | Sum identity for the all-co-singleton sector, all k | [PROVED] | routine |
+| D₅, D₆ | Sector at k = 5 has μ ≥ 3 (exact); at k = 6 the method gives 3, the truth is 4 | [PROVED-EXH] | NOT FOUND, routine |
+| — | Sector minimum is k − 2 for k = 3..7 | [PROVED-EXH] | NOT FOUND |
+| C4 | Frankl's conjecture ⇔ μ ≥ 0 on valid families containing all co-singletons | [PROVED] | PARTLY KNOWN (~50% folklore) |
+| C5 | The sum method gives nothing for any top layer once k ≥ 11 | [PROVED] | NOT FOUND |
+| F1 | Every valid one-point extension of M₂ₜ has μ ≥ t + 1, all t ≥ 2 | [PROVED] | NOT FOUND |
+| F2 | Families I(t,j), II(t): μ = ⌈k/2⌉ at every odd k | [PROVED] | NOT FOUND |
+| — | The 7 minimiser classes at k = 7 are exactly the extremal extensions of M₆ | [PROVED-EXH] | NOT FOUND |
+| D1 | A smallest valid family with μ ≤ 0 is a core | [PROVED] | routine |
+| D2, D3 | Under Frankl's conjecture: μ ≥ 1 if n is odd; μ ≥ j − 2; profile of a μ = 0 family. Unconditional for k ≤ 12 | [PROVED] | KNOWN device |
+| D4, D5 | 3μ ≥ 4k − 4 − n for k ≤ 13; so μ ≥ 1 when n ≤ 4k − 5 | [PROVED] | PARTLY KNOWN (~35% in Hu 2023) |
+| E1, E2 | (1+ψ)μ ≥ 2k − 2 − (1−ψ)n for every k; so μ ≥ 1 when n < (1+√5)(k−1) | [PROVED] | NOT FOUND (~50% exists) |
+
+The two results I consider the substance of the phase:
+
+1. **Theorem F1 with F2** (Section F). It is unconditional, it is about the
+   repository's own extremal family, it explains half of the k = 7
+   observation, and it names all seven k = 7 minimisers as members of
+   infinite families.
+2. **Proposition E1 / Corollary E2** (Sections D, E). It is unconditional
+   for every k, it is attained by M₆ and six of the seven k = 7 minimisers
+   in its κ = ½ form, and if it is new it extends the known range of
+   Frankl's conjecture for separating families from about 2k to 3.236k
+   members. Its novelty is the least certain item in the table: the proof is
+   a short combination of two published arguments.
+
+### 4.2 Which known approaches were tried, and what happened
+
+| Approach (`PROOF_SURVEY.md`) | Tried on | Outcome |
+|---|---|---|
+| Weighted averaging / FC-families (§2.3, §3) | Section C, the all-co-singleton sector | Works at k = 5, loses 1 at k = 6, covers part of the sector at k = 7 (Lemma D). **Fails for k ≥ 11** for every top layer (C5): lower layers can cost 3·2^{k−3} against a cubic gain. |
+| Reduction by cloning and co-singleton padding (Hu, §2.4) with amplification by powers | Section C | Turned into C4: the sector is as hard as the whole conjecture. A negative result about the target, not a bound. |
+| Deletion of join-irreducible members (§4.2) | Sections D, F | Gives D2/D3 conditionally on Frankl's conjecture. As an induction it **loses exactly 1 per step** (D.1). |
+| Lift / peel (repository) | Section D | Closes the degree-1 sector; **says nothing about cores**. |
+| Element deletion / extension (A_x, A_x̄ splitting, §4.2) | Section F | Lemma E and Theorem F1 for H = M₂ₜ. As a general monotonicity statement it is **false** (W2, W3). |
+| Staircase / minimal-counterexample bound (Lo Faro, Hu; §2.4) | Sections D, E | D4 and E1. **Stops at n ≈ 4k** by construction. |
+| Entropy (§1) | Section E, as a black box | Supplies the constant in E1. On its own it gives μ ≥ −0.234n, nothing. |
+| Lattice-class theorems (§2.1) | not tried | μ is not a lattice invariant (`LITERATURE.md` Prop. L). |
+| Compression (§4.3) | not tried | Raises μ or leaves the valid class. |
+| Reimer's theorem (§3.1) | not tried beyond the remark in §6 of the survey | Non-negative only for the power set. |
+
+### 4.3 What was tried and failed, with the obstruction
+
+1. **Rung 1 (μ ≥ 1 on valid families).** Not proved. It is Poonen's
+   conjecture (B2) and implies Frankl's. Obstruction: for a core there is no
+   smaller valid family whose margin controls μ(G). Point deletion can be
+   invalid (M₆) or raise μ (the k = 6 family in F.5); member deletion loses
+   1 (D.1). Under Frankl's conjecture the open part is exactly the class
+   𝓡 = {n even, β ≤ 0} of D.2, 30.2% of the valid families at k = 5.
+2. **Rung 2 (min μ(k) → ∞).** Not proved. Implies Frankl's conjecture.
+   Proved only on slices n ≤ ck, c < 3.236 (E2). Obstruction: every tool
+   gains a quantity polynomial in k, and the families that matter have
+   about 2^{k/2} members.
+3. **Rung 3 (min μ(k) = ⌈k/2⌉).** Not proved. The lower bound holds for
+   k ≤ 7, for n up to about 2.5k when k ≤ 13, and for extensions of M₂ₜ.
+   It fails to be provable for large families; at k = 8 the uncovered sizes
+   are n = 19 and n ≥ 21.
+4. **A Lemma-D-type bound for k ≥ 8 in the sector.** Not obtained. With
+   weights −4, −2, 0, +2, +4 the forced sets of positive weight are too
+   few, and G_W shows the size vector alone cannot suffice.
+5. **A derivation of C6 (μ ≥ k − 2 in the sector) from Frankl's
+   conjecture.** Not obtained. The lattice obtained by contracting the
+   co-singletons satisfies Frankl's conjecture, but its meet-irreducibles
+   do not correspond to elements when a co-singleton is a union of smaller
+   members.
+6. **The classification conjecture F3 for general t.** Not attempted;
+   exhaustive at t = 3, 4 only.
+7. **Opening Poonen (1992) and Abe (2002).** Failed again: the hosts are
+   refused by this environment. Hu (2023) was also not opened, which
+   matters for the novelty of D4 and E1.
+
+### 4.4 What was falsified
+
+| Statement | Where | Counterexample |
+|---|---|---|
+| (i) every minimiser is hub, block or matching type | k = 4, 5, 7 | 6 of 8, 41 of 51, 4 of 7 classes are none of these |
+| (ii) every minimiser has a one-point deletion that is a minimiser | k = 4, 5, 6 | 4/8, 39/51, 0/1 (ledger counts reproduced) |
+| W1: some one- or two-point deletion is a minimiser | k = 5 | 9 of 51 classes |
+| W2: a valid deletion never raises μ | k = 6 | G = {0, 6, 14, 24, 30, 38, 46, 49, 55, 57, 59, 61, 62, 63}: μ(G) = 4, μ(G − 5) = 5 |
+| W3: a valid deletion lowers μ by ≥ 1 | k = 5 | 4,570 pairs (G, x) with equality |
+| "μ(G) ≥ μ(G∖B) for B join-irreducible" as an induction step | k = 3 | U2[3] and B = 01 |
+| The sum method proves μ ≥ 1 on the sector at k = 7 | k = 7 | two top layers give a bound ≤ 0 |
+| A sentence of `PROOF_SURVEY.md` §4.1 ("no weighted version is known to fail") | — | Wang 2026; corrected in §8 of the survey |
+
+### 4.5 Open items, with confidence
+
+| Item | Confidence it is true |
+|---|---|
+| Rung 1 = Poonen's strict conjecture | about 85% |
+| C6: μ ≥ k − 2 on the all-co-singleton sector, all k | about 55% (65% given Frankl's conjecture) |
+| F3: the t + 4 families are all the extremal extensions of M₂ₜ, t ≥ 3 | about 80% |
+| min μ(8) = 4 | about 85% |
+| min μ(k) → ∞ | about 60% |
+| min μ(k) = ⌈k/2⌉ for all k ≥ 4 | about 45% |
+| Minimisers for t ≥ 3 are M₂ₜ at k = 2t and the t + 4 families at k = 2t + 1 | about 45% |
+| E2 is not already in the literature | about 50% |
+| D4 (margin form of the Lo Faro bound) is not already in the literature | about 65% |
+| C4 is not already in the literature | about 50% |
+
+### 4.6 What would be worth doing next
+
+1. Read Hu, *On the union-closed sets conjecture*, Discrete Math. 346
+   (2023) 113430, and Poonen (1992), from a network that can reach them.
+   That settles the novelty of D4, E1 and B2.
+2. k = 8. By D5 a family with μ ≤ 3 has n = 19 or n ≥ 21. That is a size
+   constraint the existing engines do not use. A prune "n ≤ 18 or n = 20 is
+   impossible at cap 3" would cut the s = 2..8 searches.
+3. Prove or refute F3 at t = 5 with an extension search that prunes on (α)
+   and (β) of the F1 proof.
+4. C6 at k = 8: `mu_search3 8 5 8 …` on the 12,346 top-layer orbits of the
+   sector, a laptop job. Not started here.
