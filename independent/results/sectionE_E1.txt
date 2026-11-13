@@ -1,0 +1,24 @@
+== E.1 all-co-singleton sector ==
+k=3 cap=0 sector cpsat(sb): UNSAT 0.0s; cadical(no sb): UNSAT 0.0s
+k=3 cap=1 sector cpsat(sb): SAT 0.0s witness valid=True mu=1 cosingletons=True; cadical(no sb): SAT 0.0s
+k=4 cap=1 sector cpsat(sb): UNSAT 0.0s; cadical(no sb): UNSAT 0.0s
+k=4 cap=2 sector cpsat(sb): SAT 0.0s witness valid=True mu=2 cosingletons=True; cadical(no sb): SAT 0.0s
+k=5 cap=2 sector cpsat(sb): UNSAT 0.0s; cadical(no sb): UNSAT 0.0s
+k=5 cap=3 sector cpsat(sb): SAT 0.0s witness valid=True mu=3 cosingletons=True; cadical(no sb): SAT 0.0s
+k=6 cap=3 sector cpsat(sb): UNSAT 0.5s; cadical(no sb): UNSAT 6.2s
+k=6 cap=4 sector cpsat(sb): SAT 0.0s witness valid=True mu=4 cosingletons=True; cadical(no sb): SAT 0.0s
+k=7 cap=4 sector cpsat(sb): UNSAT 36.1s
+k=7 cap=5 sector cpsat(sb): SAT 0.1s witness valid=True mu=5 cosingletons=True
+  ==> E1(1a) sector min mu = k-2, k=3..7: VERIFIED  (UNSAT at cap k-3, SAT at cap k-2)
+k=3 cap=1 sector: 1 labelled, mu values [1], 1 classes, closed True, (n, orbit size) [(5, 1)]  [0.0s]
+k=4 cap=2 sector: 8 labelled, mu values [2], 4 classes, closed True, (n, orbit size) [(6, 1), (8, 3), (10, 3), (12, 1)]  [0.0s]
+k=5 cap=3 sector: 124 labelled, mu values [3], 9 classes, closed True, (n, orbit size) [(7, 1), (9, 10), (9, 15), (11, 15), (11, 30), (13, 30), (15, 10), (17, 12), (27, 1)]  [0.1s]
+k=6 cap=4 sector: 452 labelled, mu values [4], 14 classes, closed True, (n, orbit size) [(8, 1), (10, 10), (10, 15), (10, 60), (12, 30), (12, 60), (14, 15), (14, 60), (16, 20), (16, 90), (18, 45), (20, 30), (30, 15), (58, 1)]  [1.5s]
+  ==> E1(1b) labelled mu=k-2 sector counts 1, 8, 124, 452 / classes 1, 4, 9, 14: VERIFIED  (k = 3..6)
+sector sizes k=3,4,5: [1, 64, 118314]
+  ==> E1(1c) sector sizes 1, 64, 118314: VERIFIED  ([1, 64, 118314])
+
+SECTION E SUMMARY
+  VERIFIED  E1(1a) sector min mu = k-2, k=3..7  [UNSAT at cap k-3, SAT at cap k-2]
+  VERIFIED  E1(1b) labelled mu=k-2 sector counts 1, 8, 124, 452 / classes 1, 4, 9, 14  [k = 3..6]
+  VERIFIED  E1(1c) sector sizes 1, 64, 118314  [[1, 64, 118314]]

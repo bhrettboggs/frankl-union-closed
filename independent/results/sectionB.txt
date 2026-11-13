@@ -1,0 +1,47 @@
+k=3 cap=0 sb=True  cpsat  : UNSAT    0.00s
+k=3 cap=0 sb=True  cadical: UNSAT    0.00s
+k=3 cap=0 sb=False cpsat  : UNSAT    0.00s
+k=3 cap=0 sb=False cadical: UNSAT    0.00s
+k=4 cap=1 sb=True  cpsat  : UNSAT    0.01s
+k=4 cap=1 sb=True  cadical: UNSAT    0.00s
+k=4 cap=1 sb=False cpsat  : UNSAT    0.06s
+k=4 cap=1 sb=False cadical: UNSAT    0.00s
+k=5 cap=2 sb=True  cpsat  : UNSAT    0.08s
+k=5 cap=2 sb=True  cadical: UNSAT    0.03s
+k=5 cap=2 sb=False cpsat  : UNSAT    0.10s
+k=5 cap=2 sb=False cadical: UNSAT    0.05s
+k=6 cap=2 sb=True  cpsat  : UNSAT    0.45s
+k=6 cap=2 sb=True  cadical: UNSAT    9.17s
+k=6 cap=2 sb=False cpsat  : UNSAT    0.96s
+k=6 cap=2 sb=False cadical: UNSAT    9.84s
+k=3 cap=1 sb=True  cpsat  : SAT      0.00s  witness: direct check valid=True, mu=1, n=5
+k=3 cap=1 sb=True  cadical: SAT      0.00s  witness: direct check valid=True, mu=1, n=5
+k=3 cap=1 sb=False cpsat  : SAT      0.00s  witness: direct check valid=True, mu=1, n=5
+k=3 cap=1 sb=False cadical: SAT      0.00s  witness: direct check valid=True, mu=1, n=5
+k=4 cap=2 sb=True  cpsat  : SAT      0.00s  witness: direct check valid=True, mu=2, n=6
+k=4 cap=2 sb=True  cadical: SAT      0.00s  witness: direct check valid=True, mu=2, n=12
+k=4 cap=2 sb=False cpsat  : SAT      0.00s  witness: direct check valid=True, mu=2, n=6
+k=4 cap=2 sb=False cadical: SAT      0.00s  witness: direct check valid=True, mu=2, n=12
+k=5 cap=3 sb=True  cpsat  : SAT      0.01s  witness: direct check valid=True, mu=3, n=7
+k=5 cap=3 sb=True  cadical: SAT      0.01s  witness: direct check valid=True, mu=3, n=27
+k=5 cap=3 sb=False cpsat  : SAT      0.00s  witness: direct check valid=True, mu=3, n=7
+k=5 cap=3 sb=False cadical: SAT      0.00s  witness: direct check valid=True, mu=3, n=27
+k=6 cap=3 sb=True  cpsat  : SAT      0.22s  witness: direct check valid=True, mu=3, n=11
+k=6 cap=3 sb=True  cadical: SAT     13.57s  witness: direct check valid=True, mu=3, n=11
+k=6 cap=3 sb=False cpsat  : SAT      0.01s  witness: direct check valid=True, mu=3, n=11
+k=6 cap=3 sb=False cadical: SAT      3.43s  witness: direct check valid=True, mu=3, n=11
+
+k=3 cap=1 cpsat  : 1 labelled solutions in 0.0s, mu values [1], direct re-check failures 0
+k=3 cap=1 cadical: 1 labelled solutions in 0.0s, mu values [1], direct re-check failures 0
+  solvers agree: True; 1 classes, union of full orbits: True; orbit sizes [1]; repo 1 labelled / 1 classes: MATCH
+k=4 cap=2 cpsat  : 48 labelled solutions in 0.0s, mu values [2], direct re-check failures 0
+k=4 cap=2 cadical: 48 labelled solutions in 0.0s, mu values [2], direct re-check failures 0
+  solvers agree: True; 8 classes, union of full orbits: True; orbit sizes [1, 1, 3, 3, 4, 12, 12, 12]; repo 48 labelled / 8 classes: MATCH
+k=5 cap=3 cpsat  : 2484 labelled solutions in 0.4s, mu values [3], direct re-check failures 0
+k=5 cap=3 cadical: 2484 labelled solutions in 0.4s, mu values [3], direct re-check failures 0
+  solvers agree: True; 51 classes, union of full orbits: True; orbit sizes [1, 1, 5, 5, 10, 10, 12, 15, 15, 15, 15, 20, 20, 20, 20, 20, 30, 30, 30, 30, 30, 30, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 120, 120, 120, 120, 120, 120]; repo 2484 labelled / 51 classes: MATCH
+k=6 cap=3 cpsat  : 120 labelled solutions in 4.1s, mu values [3], direct re-check failures 0
+k=6 cap=3 cadical: 120 labelled solutions in 25.7s, mu values [3], direct re-check failures 0
+  solvers agree: True; 1 classes, union of full orbits: True; orbit sizes [120]; repo 120 labelled / 1 classes: MATCH
+
+SECTION B RESULT: ALL AS EXPECTED, ALL COUNTS MATCH

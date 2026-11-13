@@ -1,0 +1,32 @@
+k=3 cap=None: brute force 4, cpsat 4, cadical 4: OK
+k=3 cap=0: brute force 0, cpsat 0, cadical 0: OK
+k=3 cap=1: brute force 1, cpsat 1, cadical 1: OK
+k=3 cap=2: brute force 4, cpsat 4, cadical 4: OK
+k=4 cap=None: brute force 304, cpsat 304, cadical 304: OK
+k=4 cap=1: brute force 0, cpsat 0, cadical 0: OK
+k=4 cap=2: brute force 48, cpsat 48, cadical 48: OK
+k=4 cap=3: brute force 176, cpsat 176, cadical 176: OK
+k=4 cap=4: brute force 272, cpsat 272, cadical 272: OK
+k=4 cap=5: brute force 300, cpsat 300, cadical 300: OK
+k=4 cap=6: brute force 304, cpsat 304, cadical 304: OK
+k=4 cap=1 sb_level=1: 0 labelled in 0 orbits; 0 pass symmetry breaking; every orbit met: True
+k=4 cap=1 sb_level=2: 0 labelled in 0 orbits; 0 pass symmetry breaking; every orbit met: True
+k=4 cap=2 sb_level=1: 48 labelled in 8 orbits; 8 pass symmetry breaking; every orbit met: True
+k=4 cap=2 sb_level=2: 48 labelled in 8 orbits; 8 pass symmetry breaking; every orbit met: True
+k=4 cap=3 sb_level=1: 176 labelled in 19 orbits; 19 pass symmetry breaking; every orbit met: True
+k=4 cap=3 sb_level=2: 176 labelled in 19 orbits; 19 pass symmetry breaking; every orbit met: True
+k=4 cap=4 sb_level=1: 272 labelled in 25 orbits; 25 pass symmetry breaking; every orbit met: True
+k=4 cap=4 sb_level=2: 272 labelled in 25 orbits; 25 pass symmetry breaking; every orbit met: True
+k=4 cap=5 sb_level=1: 300 labelled in 28 orbits; 28 pass symmetry breaking; every orbit met: True
+k=4 cap=5 sb_level=2: 300 labelled in 28 orbits; 28 pass symmetry breaking; every orbit met: True
+k=5 cap=2 sb_level=1: 0 labelled in 0 orbits; 0 pass symmetry breaking; every orbit met: True
+k=5 cap=2 sb_level=2: 0 labelled in 0 orbits; 0 pass symmetry breaking; every orbit met: True
+k=5 cap=3 sb_level=1: 2484 labelled in 51 orbits; 58 pass symmetry breaking; every orbit met: True
+k=5 cap=3 sb_level=2: 2484 labelled in 51 orbits; 58 pass symmetry breaking; every orbit met: True
+k=5 cap=4 sb_level=1: 17743 labelled in 262 orbits; 283 pass symmetry breaking; every orbit met: True
+k=5 cap=4 sb_level=2: 17743 labelled in 262 orbits; 283 pass symmetry breaking; every orbit met: True
+k=5 cap=5 sb_level=1: 60064 labelled in 776 orbits; 816 pass symmetry breaking; every orbit met: True
+k=5 cap=5 sb_level=2: 60064 labelled in 776 orbits; 815 pass symmetry breaking; every orbit met: True
+k=5 cap=6 sb_level=1: 123009 labelled in 1485 orbits; 1533 pass symmetry breaking; every orbit met: True
+k=5 cap=6 sb_level=2: 123009 labelled in 1485 orbits; 1531 pass symmetry breaking; every orbit met: True
+SELFTEST: PASS

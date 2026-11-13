@@ -1,0 +1,33 @@
+== E.2 one-point extensions of M_2t ==
+t=2: 58 valid extensions of M_4 (repo 58), mu distribution [(3, 16), (4, 23), (5, 15), (6, 4)], min mu 3 (repo 3), classes at min 8 (repo 8)  [enum 0.4s, classes 0.0s]
+  ==> E2 extensions of M_4: count, min mu, classes at min: VERIFIED  (58, 3, 8)
+t=3: 1272 valid extensions of M_6 (repo 1272), mu distribution [(4, 21), (5, 131), (6, 330), (7, 408), (8, 276), (9, 94), (10, 12)], min mu 4 (repo 4), classes at min 7 (repo 7)  [enum 0.2s, classes 0.2s]
+  ==> E2 extensions of M_6: count, min mu, classes at min: VERIFIED  (1272, 4, 7)
+   I(3,0)           n= 12 valid=True mu=4 extension-of-M_6=True
+   I(3,1)           n= 12 valid=True mu=4 extension-of-M_6=True
+   I(3,2)           n= 12 valid=True mu=4 extension-of-M_6=True
+   I(3,3)           n= 12 valid=True mu=4 extension-of-M_6=True
+   II(3)            n= 12 valid=True mu=4 extension-of-M_6=True
+   B(2..2,3) t=3    n= 12 valid=True mu=4 extension-of-M_6=True
+   H_3              n= 18 valid=True mu=4 extension-of-M_6=True
+   named families: 7, distinct classes 7; equal to the 7 extremal classes: True
+  ==> E2 F2/F3 at t=3: the t+4 named families are exactly the extremal extensions: VERIFIED  (7 named, 7 found)
+t=4: 123126 valid extensions of M_8 (repo 123126), mu distribution [(5, 33), (6, 148), (7, 731), (8, 5064), (9, 17625), (10, 32798), (11, 33950), (12, 20856), (13, 8608), (14, 2574), (15, 601), (16, 118), (17, 19), (18, 1)], min mu 5 (repo 5), classes at min 8 (repo 8)  [enum 47.8s, classes 40.5s]
+  ==> E2 extensions of M_8: count, min mu, classes at min: VERIFIED  (123126, 5, 8)
+   I(4,0)           n= 21 valid=True mu=5 extension-of-M_8=True
+   I(4,1)           n= 21 valid=True mu=5 extension-of-M_8=True
+   I(4,2)           n= 21 valid=True mu=5 extension-of-M_8=True
+   I(4,3)           n= 21 valid=True mu=5 extension-of-M_8=True
+   I(4,4)           n= 21 valid=True mu=5 extension-of-M_8=True
+   II(4)            n= 21 valid=True mu=5 extension-of-M_8=True
+   B(2..2,3) t=4    n= 21 valid=True mu=5 extension-of-M_8=True
+   H_4              n= 35 valid=True mu=5 extension-of-M_8=True
+   named families: 8, distinct classes 8; equal to the 8 extremal classes: True
+  ==> E2 F2/F3 at t=4: the t+4 named families are exactly the extremal extensions: VERIFIED  (8 named, 8 found)
+
+SECTION E SUMMARY
+  VERIFIED  E2 extensions of M_4: count, min mu, classes at min  [58, 3, 8]
+  VERIFIED  E2 extensions of M_6: count, min mu, classes at min  [1272, 4, 7]
+  VERIFIED  E2 F2/F3 at t=3: the t+4 named families are exactly the extremal extensions  [7 named, 7 found]
+  VERIFIED  E2 extensions of M_8: count, min mu, classes at min  [123126, 5, 8]
+  VERIFIED  E2 F2/F3 at t=4: the t+4 named families are exactly the extremal extensions  [8 named, 8 found]

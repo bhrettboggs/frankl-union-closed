@@ -1,0 +1,1 @@
+k=8 cap=3 cosingletons=False sb_level=2 workers=4 limit=43200.0s ortools=9.15.6755 python=3.13.18

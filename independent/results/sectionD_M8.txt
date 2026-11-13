@@ -1,0 +1,5 @@
+M_8: n=20 members=[0, 3, 12, 15, 48, 51, 60, 63, 127, 192, 195, 204, 207, 223, 240, 243, 247, 252, 253, 255]
+direct check: valid=True mu=4
+encoding with all variables fixed to M_8, cap 4: cpsat OPTIMAL, cadical SAT; models equal M_8: True
+same at cap 3 (expect infeasible, mu(M_8) = 4): cpsat INFEASIBLE
+SECTION D (cap 4 feasible at k=8): VERIFIED

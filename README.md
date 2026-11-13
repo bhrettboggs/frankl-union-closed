@@ -90,6 +90,28 @@ python3 orbit_driver5.py 7 7 3000 1 50000000 3 4 ld4.txt     # ~2 min
 python3 classify.py 7 orb3_k7_s2_c4.log orb3_k7_s3_c4.log orb3_k7_s4_c4.log   # 6 classes, 10,500 labeled
 ```
 
+## Independent check (`independent/`, 2026-11-13)
+
+Every k ≥ 7 result above comes from `mu_search*.c` and the `orbits*` programs, so a bug they share would pass every check in the repo. `independent/` re-derives the main results by a method that shares no code with them: a SAT / pseudo-Boolean model with one 0/1 variable per subset of [k], written from the definition of validity. No file there imports `frankl_core.py` except the final `compare_with_core.py`. The verdicts are in [`independent/FINDINGS.md`](independent/FINDINGS.md).
+
+- **Model** (`encode.py`): union-closed, ∅ and [k] present, no singletons, separating, and 2c(e) − n ≤ cap for every e. Symmetry breaking: degrees non-increasing, plus a lex-leader condition for each transposition of equal-degree elements. Its soundness proof is in the module docstring. It is never used when counting labeled solutions.
+- **Solvers** (both pip-installable): OR-Tools CP-SAT (`ortools` 9.15.6755) for the decisions and enumerations, and CaDiCaL 1.9.5 through `python-sat` 1.9.dev22 for cross-checks and DRAT proofs (`proof.py`).
+
+```bash
+pip install ortools==9.15.6755 python-sat==1.9.dev22
+cd independent
+python3 selftest.py        # encoding = brute force over all families at k = 3, 4; symmetry breaking meets every orbit
+python3 sectionB.py        # k <= 6: decisions and labeled counts 1, 48, 2484, 120 (~1 min)
+python3 decide.py 7 3      # k = 7 cap 3: INFEASIBLE (~2 min on 4 cores)
+python3 sectionC.py        # k = 7 cap 4: classes and the labeled count 11,340
+python3 sectionD.py        # k = 8 cap 4 feasible (M_8)
+python3 decide.py 8 3 --limit 43200 --log results/k8_cap3_cpsat.log   # k = 8 cap 3, time-boxed
+python3 sectionE.py        # Phase 8 cross-checks (sector, extensions of M_2t, D4/E1 at k <= 5)
+python3 compare_with_core.py   # the only script that imports frankl_core
+```
+
+Outputs are in `independent/results/`.
+
 ## History and license
 
 The search was developed locally and moved to this repository in a single commit, so the git history starts at the finished state.
